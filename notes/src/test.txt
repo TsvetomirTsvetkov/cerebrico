@@ -1,0 +1,22 @@
+# Welcome
+
+I'll be testing my markdown parser using this file.
+You're free to take notes.
+
+## Agenda
+
+### How to modify markdown parser to the user's needs?
+> Needs to create P-tags for every new line?
+### How to add TODOs?
+### How to use correctly
+### Integrate in Django
+> Use renderer
+
+#TODO Testing 1
+
+###[Django Documentation](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
+###[Beautiful Soup Documentation](https://beautiful-soup-4.readthedocs.io/en/latest/)
+
+#TODO Testing 2
+
+#TODO New Test For project
