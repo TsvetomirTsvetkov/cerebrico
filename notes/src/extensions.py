@@ -1,13 +1,13 @@
 from markdown.extensions import Extension
 
-from preprocessors import TODOPreprocessor
-from postprocessors import TODOPostprocessor
+from preprocessors import KeywordPreprocessor
+from postprocessors import KeywordPostprocessor
 
-from utils import TODO_ITEM, TODO_PRIORITY
+from utils import ITEM, PRIORITY
 
-class TODOExtension(Extension):
-    """ TODO Extension """
+class KeywordExtension(Extension):
+    """ MarkDown Extension """
 
     def extendMarkdown(self, md):
-        md.preprocessors.register(TODOPreprocessor(md), TODO_ITEM, TODO_PRIORITY)
-        md.postprocessors.register(TODOPostprocessor(md), TODO_ITEM, TODO_PRIORITY)
+        md.preprocessors.register(KeywordPreprocessor(md), ITEM, PRIORITY) # TODO: Check documentation for ITEM
+        md.postprocessors.register(KeywordPostprocessor(md), ITEM, PRIORITY) # TODO: Check documentation for ITEM

@@ -1,10 +1,10 @@
-# Singleton
 from markdown import Markdown
 
-from extensions import TODOExtension
+from extensions import KeywordExtension
 
+# Singleton
 parser = Markdown(
     extensions=[
-        TODOExtension(),
+        KeywordExtension(),
     ]
 )

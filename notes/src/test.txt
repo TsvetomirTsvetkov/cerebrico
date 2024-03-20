@@ -12,6 +12,8 @@ You're free to take notes.
 ### Integrate in Django
 > Use renderer
 
+### # AP Iztrii praznoto mqsto i shte ima bug
+
 #TODO Testing 1
 
 ###[Django Documentation](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
@@ -20,3 +22,5 @@ You're free to take notes.
 #TODO Testing 2
 
 #TODO New Test For project
+
+#AP Testing AP

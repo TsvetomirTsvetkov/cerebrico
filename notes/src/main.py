@@ -13,7 +13,7 @@ def main():
     # Debugging purposes
     print(bs_html.prettify())
     # Hacky way to update the file
-    with open('../templates/index.html', 'w', encoding="utf-8") as f:
+    with open('../templates/notes/notes_debug.html', 'w', encoding="utf-8") as f:
         f.write(bs_html.prettify())
 
 
