@@ -1,1 +1,5 @@
 /* Custom CSS */
+
+body {
+    overflow-y: scroll;  /* TODO: Better fix for issue with overflow because of scroll */
+}
