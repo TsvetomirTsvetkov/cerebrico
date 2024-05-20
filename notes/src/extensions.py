@@ -1,9 +1,9 @@
 from markdown.extensions import Extension
 
-from preprocessors import KeywordPreprocessor
-from postprocessors import KeywordPostprocessor
+from .preprocessors import KeywordPreprocessor
+from .postprocessors import KeywordPostprocessor
 
-from utils import ITEM, PRIORITY
+from .utils import ITEM, PRIORITY
 
 class KeywordExtension(Extension):
     """ MarkDown Extension """

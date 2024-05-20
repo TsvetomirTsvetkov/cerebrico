@@ -1,6 +1,6 @@
 from markdown.postprocessors import Postprocessor
 
-from utils import SEPARATOR, ITEMS_DICT
+from .utils import SEPARATOR, ITEMS_DICT
 
 
 class KeywordPostprocessor(Postprocessor):

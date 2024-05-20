@@ -2,7 +2,7 @@ import re
 
 from markdown.preprocessors import Preprocessor
 
-from utils import SEPARATOR, ITEMS_DICT, IS_PREFIX
+from .utils import SEPARATOR, ITEMS_DICT, IS_PREFIX
 
 class KeywordPreprocessor(Preprocessor):
     """ Store a custom line into the html stash """
@@ -23,7 +23,7 @@ class KeywordPreprocessor(Preprocessor):
     def __check_for_patterns(self, line):
         for item in ITEMS_DICT.keys():
             if IS_PREFIX:
-                pattern = SEPARATOR + item                    
+                pattern = SEPARATOR + item
             else:
                 pattern = item + SEPARATOR
             

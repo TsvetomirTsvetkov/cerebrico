@@ -1,7 +1,7 @@
 SEPARATOR = "#"
 ITEM = "ITEM"
 PRIORITY = 1
-IS_PREFIX = True
+IS_PREFIX = True # TODO: add it per item
 
 TODO_ITEM = "TODO"
 TODO_TEMPLATE = """
@@ -23,4 +23,3 @@ ITEMS_DICT = {
     TODO_ITEM: TODO_TEMPLATE,
     AP_ITEM: AP_TEMPLATE,
 }
-
