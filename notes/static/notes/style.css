@@ -3,3 +3,11 @@
 body {
     overflow-y: scroll;  /* TODO: Better fix for issue with overflow because of scroll */
 }
+
+.nav-link {
+    border-radius:10px;
+}
+
+.nav-link:hover {
+    background-color: #e8e6e6;
+}
