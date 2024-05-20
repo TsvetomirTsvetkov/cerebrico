@@ -1,0 +1,33 @@
+{% extends "notes/base.html" %} {% block content %}
+{% load i18n %}
+
+<div class="container w-25">
+    <h1 class="display-3 text-center mt-5">
+        <b>Sign up</b>
+    </h1>
+
+    <form action="{% url 'notes:signup' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.as_p }}
+            <!-- <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password1.label_tag }}</td>
+                    <td>{{ form.password1 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password2.label_tag }}</td>
+                    <td>{{ form.password2 }}</td>
+                </tr>
+            </table> -->
+            <button type="submit" value="signup" class="btn btn-outline-dark">Sign up</button>
+            <!-- <input type="hidden" name="next" value="{{ next }}"> -->
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,11 +1,31 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
+{% load static %}
 
 <div class="container">
     <h1 class="display-3 text-center mt-5">
-        <b>FOLDERS</b>
+        <b>FILES</b>
     </h1>
+    
+    {% if files %}
+        <div class="d-flex p-2">
+            {% for file in files %}
 
-    {% include 'notes/notes_debug.html' %}
+                <div class="card mb-3 ml-1" style="width:10rem; height:10rem;">
+                    <img src="{% static 'notes/icons/google-docs.svg' %}" class="card-img-top" alt="File">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ file.title }}</h5>
+                        <p class="card-text"><small class="text-body-secondary">Created: {{ file.created_at.date }}</small></p>
+                    </div>
+                    <a href="{% url 'notes:file' file.title %}" class="btn mt-3 btn-outline-dark">Open</a>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% else %}
+        <h5>You still don't have any files.</h5>
+        <h5>Go and create them <a href="{% url 'create' %}">here.</a></h5>
+    {% endif %}
+    <!-- {% include 'notes/notes_debug.html' %} -->
 </div>
 {% endblock %}

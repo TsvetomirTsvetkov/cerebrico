@@ -8,9 +8,29 @@
     </h1>
 
     <div class="mb-3 vh-100">
-        <label for="textarea" class="form">Start taking your notes here:</label> 
-        <textarea class="form-control h-50" id="textarea"></textarea>
-        <button type="button" type="submit" class="btn w-25 mt-3 btn-outline-dark float-right">Create Note</button> <!-- TODO: Check type -->
+        <!-- <label for="textarea" class="form">Start taking your notes here:</label> 
+        <textarea class="form-control h-50" id="textarea" placeholder="Start taking notes..."></textarea>
+        
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="formFile"> -->
+        <form method="post">
+            <div class='card p-3 bg-light mt-3'>
+                {% csrf_token %}
+                {{ text_form }}
+            </div>
+            <!-- {{ upload_form}} -->
+            <!-- <button type="submit" value="add" name="add" class="btn btn-outline-dark">Add</button> -->
+            <button type="submit" type="submit" class="btn w-25 mt-3 btn-outline-dark float-right">Create Note</button> 
+        </form>
+        <form method="post">
+            <div class='card p-3 bg-light mt-3'>
+                {% csrf_token %}
+                {{ upload_form}}
+            </div>
+            <button type="submit" type="submit" class="btn w-25 mt-3 btn-outline-dark float-right">Upload File</button> <!-- TODO: Check type -->
+            <!-- <button type="submit" value="add" name="add" class="btn btn-outline-dark">Add</button> -->
+        </form>
+        
     </div>
 </div>
 
