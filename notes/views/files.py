@@ -11,7 +11,7 @@ def files(request):
 
     return render(
         request,
-        'notes/folders.html',
+        'notes/files.html',
         {
             "files": files, 
         }
