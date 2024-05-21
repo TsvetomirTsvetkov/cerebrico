@@ -32,7 +32,7 @@ def settings(request):
         formset = UserSettingsFormSet(request.POST, instance=user)
         if formset.is_valid():
             formset.save()
-            return redirect("index")
+            return redirect("notes:index")
     else:
         formset = UserSettingsFormSet(instance=user)
 
