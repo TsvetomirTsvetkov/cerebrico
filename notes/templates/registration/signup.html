@@ -9,7 +9,7 @@
     <form action="{% url 'notes:signup' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
-            {{form.as_p }}
+            {{ form.as_p }}
             <!-- <table>
                 <tr>
                     <td>{{ form.username.label_tag }}</td>
@@ -25,7 +25,6 @@
                 </tr>
             </table> -->
             <button type="submit" value="signup" class="btn btn-outline-dark">Sign up</button>
-            <!-- <input type="hidden" name="next" value="{{ next }}"> -->
         </div>
     </form>
 </div>
