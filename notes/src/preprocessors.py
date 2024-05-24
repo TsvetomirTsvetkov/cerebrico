@@ -2,10 +2,12 @@ import re
 
 from markdown.preprocessors import Preprocessor
 
-from .utils import SEPARATOR, ITEMS_DICT, IS_PREFIX
 
 class KeywordPreprocessor(Preprocessor):
     """ Store a custom line into the html stash """
+    def __init__(self, md, user_settings):
+        super().__init__(md)
+        self.__user_settings = user_settings
 
     def run(self, lines):
         new_lines = []
@@ -21,11 +23,11 @@ class KeywordPreprocessor(Preprocessor):
         return new_lines
     
     def __check_for_patterns(self, line):
-        for item in ITEMS_DICT.keys():
-            if IS_PREFIX:
-                pattern = SEPARATOR + item
+        for item in self.__user_settings:
+            if item.is_prefix:
+                pattern = item.separator + item.keyword
             else:
-                pattern = item + SEPARATOR
+                pattern = item.keyword + item.separator
             
             m = re.search(pattern, line)
 

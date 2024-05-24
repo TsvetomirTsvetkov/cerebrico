@@ -1,11 +1,16 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
 
-<div class="container">
+<div class="container bg-light">
     <h1 class="display-3 text-center mt-5">
         <b>File</b>
     </h1>
-    {{ file }}
-</div>
 
+    
+
+</div>
+<!-- TODO: Come up with a fix for visibility!!! -->
+<iframe srcdoc="{{ parsed_file }}" height="100%" width="100%" frameborder="0" ></iframe>
+<!-- TODO: Cleanup after Testing -->
+{{user_settings}} 
 {% endblock %}

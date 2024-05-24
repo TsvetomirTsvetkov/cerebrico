@@ -15,6 +15,10 @@ class File(models.Model):
     def __str__(self):
         return str(self.title)
     
+    def save(self, *args, **kwargs):
+        self.title = self.title.replace(" ", "-")        
+        super().save(*args, **kwargs)
+
     class Meta:
       unique_together = 'user', 'title'
 
@@ -26,7 +30,6 @@ class UserSettings(models.Model):
         CHECKBUTTON: "CheckButton",
     }
  
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     option = models.CharField(max_length=250)
     type = models.CharField(choices=TYPE_CHOICES, default=CHECKBUTTON)
@@ -36,6 +39,12 @@ class UserSettings(models.Model):
 
     def __str__(self):
         return str(self.option)
+    
+    def __repr__(self):
+        if self.is_prefix:
+            return self.separator + self.keyword
+        else:
+            return self.keyword + self.separator
 
     class Meta:
         verbose_name_plural = "User Settings"

@@ -5,12 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 from notes.models import File
 
-# Parser imports # Needed in the folders
-from ..src.preprocessors import KeywordPreprocessor
-from ..src.postprocessors import KeywordPostprocessor
-from ..src.extensions import Extension
-from markdown import Markdown
-
 
 class UploadFileForm(ModelForm):
     class Meta:
