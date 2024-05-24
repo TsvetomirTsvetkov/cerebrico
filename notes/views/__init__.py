@@ -1,5 +1,6 @@
 from .board import *
 from .create import *
+from .edit import *
 from .file import *
 from .files import *
 from .index import *

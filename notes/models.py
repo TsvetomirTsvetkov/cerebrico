@@ -16,7 +16,8 @@ class File(models.Model):
         return str(self.title)
     
     def save(self, *args, **kwargs):
-        self.title = self.title.replace(" ", "-")        
+        if " " in self.title:
+            self.title = self.title.replace(" ", "-")
         super().save(*args, **kwargs)
 
     class Meta:

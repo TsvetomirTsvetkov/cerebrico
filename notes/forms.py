@@ -8,7 +8,7 @@ from notes.models import File
 
 class TextForm(forms.Form):
     title = forms.CharField(label="Title", max_length=250)
-    content = forms.CharField(label="Start writing your notes here")
+    content = forms.CharField(label="Start writing your notes here", widget=forms.Textarea)
 
 
 class UserUpdateForm(ModelForm):
