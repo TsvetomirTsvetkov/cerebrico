@@ -4,15 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from notes.models import UserSettings
 
-from django.forms import ModelForm
 from django.forms import inlineformset_factory
 from django.shortcuts import redirect
 
-
-class UserSettingsForm(ModelForm):
-    class Meta:
-        model = UserSettings
-        fields = ["user", "option", "type", "keyword", "separator", "is_prefix"]
 
 @login_required
 def settings(request):

@@ -2,12 +2,8 @@
 from django.shortcuts import render
 from django.forms import ModelForm
 from django.contrib.auth.decorators import login_required
-from django import forms
+from notes.forms import TextForm
 
-
-class TextForm(forms.Form):
-    title = forms.CharField(label="Title", max_length=250)
-    content = forms.CharField(label="Start writing your notes here")
 
 @login_required
 def create(request):

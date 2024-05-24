@@ -3,14 +3,21 @@
 
 <div class="container bg-light">
     <h1 class="display-3 text-center mt-5">
-        <b>File</b>
+        <b>{{ file.title }}</b>
     </h1>
+    <h5 class="text-center mt-1">
+        <p>
+            ({{ file.created_at.date }})
+        </p>
+    </h5>
 
-    
+    <h6>
+    </h6>
 
 </div>
-<!-- TODO: Come up with a fix for visibility!!! -->
-<iframe srcdoc="{{ parsed_file }}" height="100%" width="100%" frameborder="0" ></iframe>
-<!-- TODO: Cleanup after Testing -->
-{{user_settings}} 
+
+<div class="container bg-light">
+    <iframe srcdoc="{{ parsed_file }}" height="100%" width="100%" frameborder="0" ></iframe>
+</div>
+
 {% endblock %}

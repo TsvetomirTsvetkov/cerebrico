@@ -4,11 +4,7 @@ from django.forms import ModelForm
 from django.contrib.auth.decorators import login_required
 from notes.models import File
 
-
-class UploadFileForm(ModelForm):
-    class Meta:
-        model = File
-        fields = ["upload"]
+from notes.forms import UploadFileForm
 
 
 @login_required
