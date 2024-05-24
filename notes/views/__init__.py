@@ -10,3 +10,4 @@ from .password import *
 from .signout import *
 from .signup import *
 from .tasks import *
+from .upload import *

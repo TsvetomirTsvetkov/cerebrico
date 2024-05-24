@@ -3,13 +3,6 @@ from django.shortcuts import render
 from django.forms import ModelForm
 from django.contrib.auth.decorators import login_required
 from django import forms
-from notes.models import File
-
-
-class UploadFileForm(ModelForm):
-    class Meta:
-        model = File
-        fields = ["upload"]
 
 
 class TextForm(forms.Form):
@@ -18,25 +11,15 @@ class TextForm(forms.Form):
 
 @login_required
 def create(request):
-    upload_form = UploadFileForm(request.POST, request.FILES)
     text_form = TextForm(request.POST)
     if request.method == "POST":
-        if 'upload_form' in request.POST:
-            if upload_form.is_valid():
-                # upload_form.save()
-                print('Upload form')
-            else:
-                print('Upload form invalid')
-
-        if 'text_form' in request.POST:
-            if text_form.is_valid():
-                # TODO: Do something with the form - create file instance
-                print('Text form')
-            else:
-                print('Text form invalid')
+        if text_form.is_valid():
+            # TODO: Do something with the form - create file instance
+            print('Text form')
+        else:
+            print('Text form invalid')
 
     else:
-        upload_form = UploadFileForm()
         text_form = TextForm()
 
     return render(
@@ -44,6 +27,5 @@ def create(request):
         'notes/create.html',
         {
             'text_form': text_form,
-            'upload_form': upload_form
         }
     )
