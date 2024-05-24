@@ -3,29 +3,16 @@
 {% load crispy_forms_tags %} 
 
 <div class="container w-25">
-    <h1 class="display-3 text-center mt-5">
-        <b>Sign up</b>
-    </h1>
-
     <form action="{% url 'notes:signup' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
-            {{ form|crispy }}
-            <!-- <table>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                    <td>{{ form.username }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password1.label_tag }}</td>
-                    <td>{{ form.password1 }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password2.label_tag }}</td>
-                    <td>{{ form.password2 }}</td>
-                </tr>
-            </table> -->
-            <button type="submit" value="signup" class="btn btn-outline-dark">Sign up</button>
+            <div class='card p-3 bg-white mt-3 mb-3'>
+                <h1 class="text-center mt-5">
+                    <b>Sign up</b>
+                </h1>
+                {{ form|crispy }}
+                <button type="submit" value="signup" class="btn btn-outline-dark">Sign up</button>
+            </div>
         </div>
     </form>
 </div>
