@@ -1,5 +1,6 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
+{% load crispy_forms_tags %} 
 
 <div class="container">
     <h1 class="display-3 text-center mt-5">
@@ -16,7 +17,7 @@
         <form method="post">
             <div class='card p-3 bg-light mt-3'>
                 {% csrf_token %}
-                {{ text_form }}
+                {{ text_form|crispy }}
             </div>
             <!-- {{ upload_form}} -->
             <!-- <button type="submit" value="add" name="add" class="btn btn-outline-dark">Add</button> -->
