@@ -1,5 +1,6 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
+{% load crispy_forms_tags %} 
 
 <div class="container w-25">
     <h1 class="display-3 text-center mt-5">
@@ -9,7 +10,7 @@
     <form action="{% url 'notes:signup' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
-            {{ form.as_p }}
+            {{ form|crispy }}
             <!-- <table>
                 <tr>
                     <td>{{ form.username.label_tag }}</td>
