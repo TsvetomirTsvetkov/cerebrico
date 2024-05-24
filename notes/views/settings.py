@@ -19,10 +19,6 @@ def settings(request):
     user = User.objects.get(username=request.user)
 
     if request.method == "POST":
-        # if request.POST.get("save"):
-        #     print('save')
-        # elif request.POST.get("add"):
-        #     print('add')
         formset = UserSettingsFormSet(request.POST, instance=user)
         if formset.is_valid():
             formset.save()
