@@ -1,11 +1,71 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
 
-<div class="container d-flex align-items-center justify-content-center vh-100">
-    <h1 class="display-1 text-center">
-        <!-- TODO: Create different views for logged in VS. not logged in -->
-        <b>Welcome.</b>
-    </h1>
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="row align-items-center vh-100">
+        <div class="col bg-white rounded pt-5 pb-5 border border-dark">
+            <div class="container">
+                <h1 class="display-2">
+                    <b>Are you ready?</b>
+                </h1>
+                <h1 class="display-5">
+                    Navigation has never been easier.
+                    
+                </h1>
+                <p>
+                    <b>Tip:</b><br>
+                    Go to the "Settings" tab on the left and customize your keywords.
+                </p>
+                <a href="{% url 'notes:create' %}" class="btn btn-lg text-center btn-dark">Let's begin</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% else %}
+    <div class="row align-items-center vh-100">
+        <div class="col-6 bg-white rounded pt-5 pb-5 border border-dark">
+            <div class="container">
+                <h1 class="display-5">
+                    Welcome to
+                </h1>
+                <h1 class="display-2">
+                    <b>Cerebrico</b>
+                </h1>
+                <ul class="list-inline">
+                    <li class="list-inline-item">Create.</li>
+                    <li class="list-inline-item">Control.</li>
+                    <li class="list-inline-item">Capture.</li>
+                </ul>
+                <figure class="text-end">
+                    <blockquote class="blockquote">
+                      <p>Well you know, for my experience, your head's for having ideas, not for holding them.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        David Allen
+                    </figcaption>
+                </figure>
+                <a href="{% url 'notes:signup' %}" class="btn btn-lg text-center btn-dark">Join us</a>
+            </div>
+        </div>
+        <div class="col-6 rounded pt-5 pb-5">
+            <h1 class="display-5">
+                Endless Possibilities
+            </h1>
+            <h5>
+                Utility-driven.
+                Smart.
+                Reliable.
+            </h5>
+            <p class="lead">
+                A place for all people school, university and work.
+            </p>
+            <p>
+                Take a moment and think about all the times when you've wasted time looking for information...
+                Now imagine it's all in <b>one place.</b>
+            </p>
+        </div>
+    </div>
+    {% endif %}
 </div>
-
 {% endblock %}

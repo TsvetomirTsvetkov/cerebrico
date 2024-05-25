@@ -9,5 +9,6 @@ body {
 }
 
 .nav-link:hover {
-    background-color: #e8e6e6;
+    /* background-color: #e8e6e6; */
+    color: #000000;
 }

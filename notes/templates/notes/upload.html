@@ -3,22 +3,22 @@
 {% load crispy_forms_tags %} 
 
 <div class="container">
-    <h1 class="display-3 text-center mt-5">
-        
-        <b>{% translate "CREATE" %}</b>
+    <h1 class="display-3 text-center">
+        <b>{% translate "UPLOAD" %}</b>
     </h1>
-
-    <div class="mb-3 vh-100">
+    <div class="mb-3">
         <form method="post">
-            <div class='card p-3 bg-light mt-3'>
+            <div class='card p-3 bg-white mt-3'>
                 {% csrf_token %}
                 {{ upload_form|crispy }}
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" type="submit" class="btn w-25 mt-3 btn-outline-dark float-right">Upload File</button> <!-- TODO: Check type -->
+                        <!-- <p>Or you can go and <a href="{% url 'notes:create' %}"><b>write</b></a></p> -->
+                    </div>
+                </div> 
             </div>
-            <button type="submit" type="submit" class="btn w-25 mt-3 btn-outline-dark float-right">Upload File</button> <!-- TODO: Check type -->
-            <!-- <button type="submit" value="add" name="add" class="btn btn-outline-dark">Add</button> -->
         </form>
-        <p>or</p>
-        <a class="" href="{% url 'notes:create' %}">Create</a>
     </div>
 </div>
 
