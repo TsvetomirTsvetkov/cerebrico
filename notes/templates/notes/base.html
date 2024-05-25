@@ -13,10 +13,11 @@
     <body>
         <nav class="navbar fixed-top navbar-expand">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'notes:index' %}">
-                 Cerebrico
-                </a>
-                
+                {% if user.is_authenticated %}
+                    <a class="navbar-brand" href="{% url 'notes:index' %}">
+                        Cerebrico
+                    </a>
+                {% endif %}
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     {% if user.is_authenticated %}
                     <li class="nav-item rounded">
@@ -44,13 +45,8 @@
                 {% if user.is_authenticated %}
                 <div class="col-sm-1 h-100 text-center border-end border-dark bg-white position-fixed">
                     <ul class="nav flex-column">
-                        <li class="nav-item my-3 w-100">
-                            <a class="nav-brand" href="{% url 'notes:index' %}">
-                                <img src="{% static 'notes/icons/select-point3d.svg' %}" alt="Cerebrico">
-                            </a> 
-                        </li>
 
-                        <li class="nav-item my-3">
+                        <li class="nav-item my-3 mt-5">
                             <a class="nav-brand" href="{% url 'notes:create' %}">
                                 <img src="{% static 'notes/icons/page-plus.svg' %}" alt="Create">
                             </a>
@@ -84,13 +80,12 @@
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                <div class="col-sm-11 offset-sm-1 bg-light">
+                <div class="col-sm-11 offset-sm-1 bg-light bg-gradient">
                 {% else %}
-                <div class="col-sm bg-light">
+                <div class="col-sm bg-light bg-gradient">
                 {% endif %}
                     {% block content %} {% endblock %}
                 </div>
-                
            
             </div>
 
