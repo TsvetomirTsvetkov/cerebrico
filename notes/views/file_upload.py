@@ -8,7 +8,7 @@ from notes.forms import UploadFileForm
 
 
 @login_required
-def upload(request):
+def file_upload(request):
     upload_form = UploadFileForm(request.POST, request.FILES)
 
     if request.method == "POST":
@@ -24,7 +24,7 @@ def upload(request):
 
     return render(
         request,
-        'notes/upload.html',
+        'notes/file_upload.html',
         {
             "upload_form": upload_form
         }

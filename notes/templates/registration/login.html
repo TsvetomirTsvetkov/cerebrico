@@ -2,16 +2,16 @@
 {% load i18n %}
 {% load crispy_forms_tags %} 
 
-<div class="container w-25">
+<div class="container-fluid w-25">
     <form action="{% url 'notes:login' %}" method="post">
         {% csrf_token %}
-        <div class="form-group pt-5 pb-5">
+        <div class="form-group pt-5">
             <div class='card p-3 bg-white'>
                 <h1 class="text-center">
                     <b>Log in</b>
                 </h1>
                 {{ form|crispy }}
-                <button type="submit" value="login" class="btn btn-outline-dark">Log in</button>
+                <button type="submit" value="login" class="btn btn-dark">Log in</button>
                 <div class="card-footer bg-white">
                     <div class="d-flex justify-content-center">
                         <p>Don't have an account? <a href="{% url 'notes:signup' %}">Sign up</a></p>

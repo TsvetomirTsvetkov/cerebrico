@@ -3,13 +3,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 from notes.forms import TextForm
 
 
 @login_required
-def edit(request, title):
-    file = User.objects.get(username=request.user).file_set.get(title=title)
+def file_edit(request, title):
+    file = get_object_or_404(request.user.file_set, title=title)
 
     with open(file.upload.path, 'r') as f:
         file_content = f.read()
@@ -29,7 +30,7 @@ def edit(request, title):
 
     return render(
         request,
-        'notes/edit.html',
+        'notes/file_edit.html',
         {
             "file": file,
             "form": form

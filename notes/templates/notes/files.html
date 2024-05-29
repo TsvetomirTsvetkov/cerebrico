@@ -3,28 +3,32 @@
 {% load static %}
 
 <div class="container">
-    <h1 class="display-3 text-center">
+    <h1 class="display-5 text-center">
         <b>FILES</b>
     </h1>
-    
+
     {% if files %}
-        <div class="d-flex p-2">
+        <div class="list-group">
+            <li class="list-group-item list-group-item-secondary">Name</li>
             {% for file in files %}
-
-                <div class="card mb-3 ml-1" style="width:10rem; height:10rem;">
-                    <img src="{% static 'notes/icons/google-docs.svg' %}" class="card-img-top" alt="File">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ file.title }}</h5>
-                        <p class="card-text"><small class="text-body-secondary">Created: {{ file.created_at.date }}</small></p>
-                    </div>
-                    <a href="{% url 'notes:file' file.title %}" class="btn mt-3 btn-outline-dark">Open</a>
+                <div class="d-flex">
+                    <a href="{% url 'notes:file' file.title %}" class="list-group-item list-group-item-action "><b>{{ file.title }}</b>
+                        <div class="d-flex">
+                            <small>{{ file.created_at.date }}</small>
+                        </div>
+                    </a>
+                    <a href="{% url 'notes:file_delete' file.title %}" class="btn btn-sm btn-light d-inline-flex align-items-center">
+                        <img src="{% static 'notes/icons/trash.svg' %}" alt="Create">
+                    </a>
                 </div>
-
             {% endfor %}
         </div>
+        
     {% else %}
-        <h5>You still don't have any files.</h5>
-        <h4>Go and create them <a href="{% url 'notes:create' %}">here.</a></h5>
+        <div class="w-100">
+            <h5>You still don't have any files.</h5>
+            <h6>Go and create them <a href="{% url 'notes:create' %}">here</a>.</h6>
+        </div>
     {% endif %}
 </div>
 {% endblock %}

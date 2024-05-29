@@ -13,7 +13,7 @@ class KeywordPreprocessor(Preprocessor):
         new_lines = []
 
         for line in lines:
-            m = self.__check_for_patterns(line)
+            m = KeywordPreprocessor.check_for_patterns(line, self.__user_settings)
 
             if m:
                 self.md.htmlStash.store(line)
@@ -22,8 +22,9 @@ class KeywordPreprocessor(Preprocessor):
 
         return new_lines
     
-    def __check_for_patterns(self, line):
-        for item in self.__user_settings:
+    @staticmethod
+    def check_for_patterns(line, user_settings):
+        for item in user_settings:
             if item.is_prefix:
                 pattern = item.separator + item.keyword
             else:

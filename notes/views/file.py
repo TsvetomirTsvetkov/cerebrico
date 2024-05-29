@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -18,7 +19,7 @@ def parse_file(file_contents, user_settings):
 
 @login_required
 def file(request, title):
-    file = User.objects.get(username=request.user).file_set.get(title=title)
+    file = get_object_or_404(request.user.file_set, title=title)
 
     user_settings = User.objects.get(username=request.user).usersettings_set.all()
 

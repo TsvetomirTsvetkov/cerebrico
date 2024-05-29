@@ -5,25 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
 
-from notes.forms import UserUpdateForm
+from notes.forms import UserUpdateForm, toggle_editable
 
 @login_required
 def profile(request):
-
-    if request.method == 'POST':
-        form = UserUpdateForm(request.POST, instance=request.user)
-
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='notes:profile')
-    else:
-        form = UserUpdateForm(instance=request.user)
+    form = UserUpdateForm(instance=request.user)
+    form = toggle_editable(form, disabled=True)
 
     return render(
         request,
         'notes/profile.html',
         {
-            "form": form
+            "form": form,
         }
     )

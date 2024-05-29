@@ -10,7 +10,7 @@
         {% csrf_token %}
         <div class='card p-3 bg-white mt-3'>
             {{ form|crispy }}
-            <a href="{% url 'notes:profile_edit' %}" class="btn w-100 mt-3 btn-dark">Edit</a>
+            <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save" class="btn btn-outline-dark">Save</button>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-center">
                     <a href="{% url 'notes:change_password' %}">Change Password</a>

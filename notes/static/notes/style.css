@@ -1,14 +1,23 @@
 /* Custom CSS */
 
-body {
-    overflow-y: scroll;  /* TODO: Better fix for issue with overflow because of scroll */
+html {
+    overflow-y: scroll;
+} 
+
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-.nav-link {
-    border-radius:10px;
+body {
+    padding-top: 56px;
 }
+
 
 .nav-link:hover {
-    /* background-color: #e8e6e6; */
     color: #000000;
+}
+
+.image-upload>input {
+    display: none;
 }

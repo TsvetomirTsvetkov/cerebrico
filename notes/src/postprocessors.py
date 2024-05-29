@@ -28,7 +28,6 @@ class KeywordPostprocessor(Postprocessor):
                     items_dict[key].append(" ".join(split_string[item_index + 1:]))
                 except ValueError:
                     pass
-                # Save remainder to file contents - TODO: Possibly update preprocessor if we want this to work
 
             # lines = self.__create_checkbutton_element(split_string[1:], cnt) + '\n' + lines
 
@@ -47,7 +46,7 @@ class KeywordPostprocessor(Postprocessor):
             if items_dict[key] == []:
                 pass
             else:
-                tasks += (str(key) + '\n')  # TODO: Possibly make it also some sort of a header tag?
+                tasks += ('<h3>' + str(key) + '<h3>\n')  # TODO: Possibly make it also some sort of a header tag?
                 for el in items_dict[key]:
                     # TODO: Handle type of object that needs creation and call relevant funct (dict with default types)
                     tasks += self.__create_checkbutton_element(el, cnt)

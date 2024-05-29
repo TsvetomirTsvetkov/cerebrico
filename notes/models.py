@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
 
 
 def user_directory_path(instance, filename=""):
@@ -9,20 +10,28 @@ def user_directory_path(instance, filename=""):
 class File(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
-    upload = models.FileField(upload_to=user_directory_path)
+    upload = models.FileField(upload_to=user_directory_path, validators=[FileExtensionValidator(allowed_extensions=['md', 'txt'])])
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.title)
     
     def save(self, *args, **kwargs):
+        # Make file title url-friendly
+        # self.title = self.upload.name
         if " " in self.title:
             self.title = self.title.replace(" ", "-")
+            
         super().save(*args, **kwargs)
 
-    class Meta:
-      unique_together = 'user', 'title'
+    def delete(self, *args, **kwargs):
+        # Cleanup the Media directory
+        self.upload.delete()
+        super().delete(*args, *kwargs)
 
+    class Meta:
+      # Make file names unique per user
+      unique_together = ["user", "title"]
 
 class UserSettings(models.Model):
     CHECKBUTTON = "CB"

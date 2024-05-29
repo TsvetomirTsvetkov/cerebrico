@@ -16,15 +16,14 @@ def settings(request):
         fields=["option", "type", "keyword", "separator", "is_prefix"], 
         extra=1
     )
-    user = User.objects.get(username=request.user)
 
     if request.method == "POST":
-        formset = UserSettingsFormSet(request.POST, instance=user)
+        formset = UserSettingsFormSet(request.POST, instance=request.user)
         if formset.is_valid():
             formset.save()
             return redirect("notes:index")
     else:
-        formset = UserSettingsFormSet(instance=user)
+        formset = UserSettingsFormSet(instance=request.user)
 
     return render(
         request,

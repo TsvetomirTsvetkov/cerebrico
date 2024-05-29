@@ -7,7 +7,7 @@ from notes.models import UserSettings
 
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.POST, label_suffix=":")
 
         if form.is_valid():
             user = form.save()
