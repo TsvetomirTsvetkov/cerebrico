@@ -7,7 +7,7 @@ TIPS = [
     "Go to the \"Settings\" tab on the left and customize your keywords.",
     "You can see all of your tasks in one place. They're in the \"Tasks\" section.",
     "Click on the folder icon on the left and you\'ll see all of your files.",
-    "If you want to change your username, password or other profile information - click on \"My Profile\" at the top."
+    "If you want to change your username, password or other profile information, click on \"My profile\" at the top."
 ]
 
 

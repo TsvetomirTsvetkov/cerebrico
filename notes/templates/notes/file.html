@@ -1,23 +1,24 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
 
-<div class="container w-75 bg-light">
-    <h1 class="display-5 text-center">
-        <b>{{ file.title }}</b>
-    </h1>
-    <h5 class="text-center mt-1">
+<div class="container w-75 vh-100">
+    <div class="text-center">
+        <h1 class="display-5">
+            <b>{{ file.title }}</b>
+        </h1>
         <p>
-            ({{ file.created_at.date }})
+            [{{ file.created_at.date }}]
         </p>
-    </h5>
-
-    <a class="" href="{% url 'notes:file_edit' file %}">Edit</a>
-
+        <a class="text-center btn btn-dark m-1" href="{% url 'notes:file_edit' file %}">Edit</a>
+    </div>
+    <div class="card border m-3">
+        <div class="card-body">
+            {{ parsed_file|safe }}
+        </div>
+    </div>
 </div>
 
-<div id="container">
-    {{ parsed_file|safe }}
-</div>
+
 
 <script type="text/javascript">
     window.onload = findId( 10, 20 ); // call function with parameters on page load

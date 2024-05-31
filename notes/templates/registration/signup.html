@@ -5,7 +5,7 @@
 <div class="container w-25">
     <form action="{% url 'notes:signup' %}" method="post">
         {% csrf_token %}
-        <div class="form-group pt-5 pb-5">
+        <div class="form-group pt-5">
             <div class='card p-3 bg-white'>
                 <h1 class="text-center">
                     <b>Sign up</b>
@@ -13,8 +13,8 @@
                 {{ form|crispy }}
                 <button type="submit" value="signup" class="btn btn-dark">Sign up</button>
                 <div class="card-footer bg-white">
-                    <div class="d-flex justify-content-center">
-                        <p>Already signed up? <a href="{% url 'notes:login' %}">Log in</a></p>
+                    <div class="d-flex text-center justify-content-center">
+                        <p>Already signed up?<br><a href="{% url 'notes:login' %}">Log in</a></p>
                     </div>
                 </div>
             </div>

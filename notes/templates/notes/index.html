@@ -2,9 +2,11 @@
 {% load i18n %}
 {% load static %}
 
-<div class="container">
-    {% if user.is_authenticated %}
-    <div class="row align-items-center">
+
+{% if user.is_authenticated %}
+<div class="container-fluid vh-100">
+    
+    <div class="row align-items-center ">
         <div class="col bg-white rounded pt-5 pb-5 border border-dark">
             <div class="container">
                 <h1 class="display-2">
@@ -14,7 +16,6 @@
                     Notes have never been easier.
                 </h1>
                 <p>
-                    <!-- TODO: Generate on random -->
                     <b>Tip:</b><br>
                     {{tip}}
                 </p>
@@ -22,8 +23,10 @@
             </div>
         </div>
     </div>
-    </div>
-    {% else %}
+</div>
+    
+{% else %}
+<div class="container-fluid vh-100">
     <div class="row align-items-center">
         <div class="col col-sm-6 bg-white rounded pt-5 pb-5 border border-dark">
             <div class="container">
@@ -39,7 +42,6 @@
                     <li class="list-inline-item">Capture.</li>
                 </ul>
                 <figure class="text-end">
-                    <!-- TODO: Generate on random -->
                     <blockquote class="blockquote">
                       <p>{{quote}}</p>
                     </blockquote>
@@ -68,7 +70,7 @@
             </p>
         </div>
     </div>
-    {% endif %}
 </div>
+{% endif %}
 
 {% endblock %}

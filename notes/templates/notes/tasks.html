@@ -1,12 +1,26 @@
 {% extends "notes/base.html" %} {% block content %}
 {% load i18n %}
 
-<div class="container">
-    <h1 class="display-5 text-center">
-        <b>TASKS</b>
-    </h1>
+<div class="container w-75 vh-100">
+    <div class="text-center">
+        <h1 class="display-5">
+            <b>TASKS</b>
+        </h1>
+    </div>
+    <div class="card border m-3">
+        <div class="card-body">
+            {% for key, values in all_tasks_dict.items %}
+                {% for value in values %}
+                    <input type='checkbox' {% if value %} checked {% endif %}>{{ value }}</input><br>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
-{{all_tasks}}
+
+
+
+
 
 {% endblock %}

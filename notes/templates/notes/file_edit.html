@@ -2,25 +2,25 @@
 {% load i18n %}
 {% load crispy_forms_tags %} 
 
-<div class="container w-75">
-    <h1 class="display-5 text-center">
-        <b>{{ file.title }}</b>
-    </h1>
-    <h5 class="text-center">
+<div class="container w-75 vh-100">
+    <div class="text-center m-1">
+        <h1 class="display-5">
+            <b>{{ file.title }}</b>
+        </h1>
         <p>
-            ({{ file.created_at.date }})
+            [{{ file.created_at.date }}]
         </p>
-    </h5>
+        <a class="text-center btn btn-dark m-1" href="{% url 'notes:file' file %}">Back</a>
+    </div>
 
     <form method="post">
         {% csrf_token %}
-        <div class='card p-3 bg-light mt-3'>
+        <div class='card p-3 bg-white mt-3'>
             {{ form|crispy }}
         </div>
-        <button type="submit" class="btn w-100 mt-3 btn-outline-dark" value="save" name="save" class="btn btn-outline-dark">Save</button>
+        <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save">Save</button>
     </form>
 
-    <a class="" href="{% url 'notes:file' file %}">Back</a>
 
 </div>
 

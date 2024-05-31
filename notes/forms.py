@@ -15,7 +15,7 @@ def toggle_editable(form, disabled=False):
 
 class TextForm(forms.Form):
     title = forms.CharField(label="Title", max_length=250)
-    content = forms.CharField(label="Start writing your notes here", widget=forms.Textarea)
+    content = forms.CharField(label="Notes", widget=forms.Textarea)
 
 
 class UserUpdateForm(ModelForm):

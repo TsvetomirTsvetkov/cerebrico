@@ -13,11 +13,8 @@ def file_upload(request):
 
     if request.method == "POST":
         if upload_form.is_valid():
-            # upload_form.save()
-            print('Upload form')
+            upload_form.save()
             # TODO: Verify extension / contents
-        else:
-            print('Upload form invalid')
 
     else:
         upload_form = UploadFileForm()
