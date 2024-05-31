@@ -31,12 +31,13 @@ def tasks(request):
     all_tasks_dict = {}
 
     for file in files:
-        all_tasks_dict[file.title] = []
         with file.upload.open('r') as f:
             lines = f.readlines()
             for line in lines:
                 m = KeywordPreprocessor.check_for_patterns(line, user_settings)
                 if m:
+                    if file.title not in all_tasks_dict.keys():
+                        all_tasks_dict[file.title] = []
                     all_tasks_dict[file.title].append(line)
 
     return render(

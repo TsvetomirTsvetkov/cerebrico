@@ -7,20 +7,21 @@
             <b>TASKS</b>
         </h1>
     </div>
-    <div class="card border m-3">
-        <div class="card-body">
-            {% for key, values in all_tasks_dict.items %}
-                {% for value in values %}
-                    <input type='checkbox' {% if value %} checked {% endif %}>{{ value }}</input><br>
-                {% endfor %}
-            {% endfor %}
+    {% if all_tasks_dict %}
+        <div class="card border m-3">
+            <div class="card-body"> 
+                    {% for key, values in all_tasks_dict.items %}
+                        {% for value in values %}
+                            <input type='checkbox'{% if value %} checked {% endif %}>{{ value }}</input><br>
+                        {% endfor %}
+                    {% endfor %}
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="text-center">
+            No Tasks found.
+        </div>
+    {% endif %}
 </div>
-
-
-
-
-
 
 {% endblock %}
