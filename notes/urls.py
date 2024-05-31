@@ -20,6 +20,7 @@ urlpatterns = [
     path("profile/delete", views.profile_delete, name="profile_delete"),
     path('profile/edit/change-password/', views.change_password, name='change_password'),
     path("login/", views.CustomLoginView.as_view(), name="login"),
+    path('search/', views.search, name='search'),
     path("signout/", views.signout, name="signout"),
     path("signup/", views.signup, name="signup")
 ]

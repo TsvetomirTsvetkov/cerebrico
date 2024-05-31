@@ -12,6 +12,7 @@ from .settings import *
 from .profile import *
 from .profile_delete import *
 from .profile_edit import *
+from .search import *
 from .signout import *
 from .signup import *
 from .tasks import *
