@@ -58,3 +58,5 @@ class UserSettings(models.Model):
 
     class Meta:
         verbose_name_plural = "User Settings"
+        unique_together = ["keyword", "separator", "is_prefix"]
+
