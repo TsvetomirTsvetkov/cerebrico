@@ -1,14 +1,12 @@
 import re
 
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 
 
 def search(request):
     found_files = []
-    error = ""
+    error = None
 
     query = request.GET.get('q')
 
@@ -26,12 +24,16 @@ def search(request):
                 error = "Sorry, we couldn't find anything..."
         else:
             error = "Please, sign up or log in if you want to search through your notes."
+    else:
+        error = "Please, write something first..."
 
     return render(
         request,
         'notes/search.html',
         {
             "found_files": found_files, 
-            "error": error
+            "error": error,
         }
     )
+
+
