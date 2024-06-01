@@ -20,11 +20,16 @@ def file_edit(request, title):
     if request.method == "POST":
         form = TextForm(request.POST)
         if form.is_valid():
-            file.title = form["title"].value()
-            with open(file.upload.path, 'w') as f:
-                f.write(form["content"].value())
-            file.save()
-            return redirect("notes:file", file)
+            try:
+                file.title = form["title"].value()
+                file.upload.name = form["title"].value()
+                # TODO: Actually move file?
+                with open(file.upload.path, 'w') as f:
+                    f.write(form["content"].value())
+                file.save()
+                return redirect("notes:file", file)
+            except:
+                formset = TextForm()
     else:
         formset = TextForm()
 
