@@ -25,9 +25,9 @@
         </div>
         
     {% else %}
-        <div class="w-100">
+        <div class="w-100 text-center">
             <h5>You still don't have any files.</h5>
-            <h6>Go and create them <a href="{% url 'notes:create' %}">here</a>.</h6>
+            <h6>Go and create them <a href="{% url 'notes:file_create' %}">here</a>.</h6>
         </div>
     {% endif %}
 </div>
