@@ -25,8 +25,7 @@ class File(models.Model):
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        # Cleanup the Media directory
-        self.upload.delete()
+        # TODO: Cleanup of media directory
         super().delete(*args, *kwargs)
 
     class Meta:
