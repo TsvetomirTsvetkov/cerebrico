@@ -1,4 +1,4 @@
-{% extends "notes/base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %}
 {% load i18n %}
 {% load static %}
 
@@ -19,7 +19,7 @@
                     <b>Tip:</b><br>
                     {{tip}}
                 </p>
-                <a href="{% url 'notes:file_create' %}" class="btn btn-lg text-center btn-dark">Let's begin</a>
+                <a href="{% url 'notes:create' %}" class="btn btn-lg text-center btn-dark">Let's begin</a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                         {{author}}
                     </figcaption>
                 </figure>
-                <a href="{% url 'notes:signup' %}" class="btn btn-lg text-center btn-dark">Join us</a>
+                <a href="{% url 'authentication:signup' %}" class="btn btn-lg text-center btn-dark">Join us</a>
             </div>
         </div>
         <div class="col col-sm-6 rounded pt-5 pb-5">

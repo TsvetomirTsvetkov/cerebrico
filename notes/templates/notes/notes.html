@@ -4,13 +4,13 @@
 
 <div class="container vh-100">
     <h1 class="display-5 text-center">
-        <b>Search</b>
+        <b>FILES</b>
     </h1>
 
-    {% if found_files %}
+    {% if files %}
         <div class="list-group justify-content-center">
             <li class="list-group-item list-group-item-secondary">Name</li>
-            {% for file in found_files %}
+            {% for file in files %}
                 <div class="d-flex">
                     <a href="{% url 'notes:note' file.title %}" class="list-group-item list-group-item-action "><b>{{ file.title }}</b>
                         <div class="d-flex">
@@ -26,7 +26,8 @@
         
     {% else %}
         <div class="w-100 text-center">
-            <h5>{{ error }}</h5>
+            <h5>You still don't have any files.</h5>
+            <h6>Go and create them <a href="{% url 'notes:create' %}">here</a>.</h6>
         </div>
     {% endif %}
 </div>

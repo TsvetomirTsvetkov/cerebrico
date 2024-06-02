@@ -1,9 +1,14 @@
+# External Imports
 import re
 
-from django.shortcuts import render
+# Django Imports
 from django.contrib.auth.models import User
+from django.shortcuts import render
+
+# Internal Imports
 
 
+# Views
 def search(request):
     found_files = []
     error = None
@@ -35,5 +40,3 @@ def search(request):
             "error": error,
         }
     )
-
-

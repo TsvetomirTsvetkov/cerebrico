@@ -17,8 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from notes.views import index, search, tasks
+
 
 urlpatterns = [
-    path("", include("notes.urls")),
+    path("", include("authentication.urls")),
+    path("", index, name='index'),
+    path("search/", search, name='search'),
+    path("tasks/", tasks, name='tasks'),
+    path("notes/", include("notes.urls")),
+    path('profile/', include("profiles.urls")),
     path('admin/', admin.site.urls),
+    
 ]

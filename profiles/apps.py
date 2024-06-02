@@ -7,6 +7,6 @@ from django.apps import AppConfig
 
 
 # Configuration
-class NotesConfig(AppConfig):
+class ProfilesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'notes'
+    name = 'profiles'

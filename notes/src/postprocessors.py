@@ -7,14 +7,16 @@ from .utils import CB_TYPE
 class KeywordPostprocessor(Postprocessor):
     """ Convert a custom line into an html tag """
 
-    def __init__(self, md, user_settings):
+    def __init__(self, md, profile_settings):
         super().__init__(md)
-        self.__user_settings = user_settings
+        self.__profile_settings = profile_settings
 
     def run(self, lines):
-        # Create a dict of user_settings
+        # Testing
+        # lines = super().run(lines)
+        # Create a dict of profile_settings
         items_dict = {}
-        for item in self.__user_settings:
+        for item in self.__profile_settings:
             items_dict[item] = []
 
         # Group based on type in order to seperate them into "categories"

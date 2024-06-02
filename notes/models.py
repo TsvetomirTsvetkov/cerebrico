@@ -1,12 +1,15 @@
-from django.db import models
+# External Imports
+
+# Django Imports
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
+from django.db import models
+
+# Internal Imports
+from notes.utils import user_directory_path
 
 
-def user_directory_path(instance, filename=""):
-    return 'user_{0}/{1}'.format(instance.user.id, filename)
-
-
+# Models
 class File(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
@@ -31,31 +34,3 @@ class File(models.Model):
     class Meta:
       # Make file names unique per user
       unique_together = ["user", "title"]
-
-class UserSettings(models.Model):
-    CHECKBUTTON = "CB"
-
-    TYPE_CHOICES = {
-        CHECKBUTTON: "CheckButton",
-    }
- 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    option = models.CharField(max_length=250)
-    type = models.CharField(choices=TYPE_CHOICES, default=CHECKBUTTON)
-    keyword = models.CharField(max_length=50)
-    separator = models.CharField(max_length=2)
-    is_prefix = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.option)
-    
-    def __repr__(self):
-        if self.is_prefix:
-            return self.separator + self.keyword
-        else:
-            return self.keyword + self.separator
-
-    class Meta:
-        verbose_name_plural = "User Settings"
-        unique_together = ["keyword", "separator", "is_prefix"]
-

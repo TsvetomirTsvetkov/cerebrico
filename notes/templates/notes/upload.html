@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+{% load i18n %}
+{% load crispy_forms_tags %} 
+
+<div class="container w-75 vh-100">
+    <h1 class="display-5 text-center">
+        <b>{% translate "UPLOAD" %}</b>
+    </h1>
+    <form enctype="multipart/form-data" method="post">
+        <div class='card p-3 bg-white mt-3'>
+            {% csrf_token %}
+            {{ upload_form|crispy }}
+            <button type="submit" type="submit" class="btn mt-3 btn-dark">Upload File</button>
+            <div class="card-footer bg-white">
+                <div class="d-flex justify-content-center text-center">
+                    <p>Or you can just <a href="{% url 'notes:create' %}"><b>create</b></a> one</p>
+                </div>
+            </div> 
+        </div>
+    </form>
+</div>
+
+{% endblock %}

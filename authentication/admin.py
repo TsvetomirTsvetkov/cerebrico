@@ -1,9 +1,8 @@
 # External Imports
 
 # Django Imports
-from django.test import TestCase
+from django.contrib import admin
 
 # Internal Imports
 
-
-# Tests
+# Register Models

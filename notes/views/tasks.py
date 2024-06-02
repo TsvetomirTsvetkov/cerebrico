@@ -1,11 +1,15 @@
-# from django.http import HttpResponse
-from django.shortcuts import render
+# External Imports
+
+# Django Imports
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.shortcuts import render
 
-# TODO: Possibly remove from Preprocessor and make common?
-from notes.src.preprocessors import KeywordPreprocessor
+# Internal Imports
+from notes.src.preprocessors import KeywordPreprocessor # TODO: Possibly remove from Preprocessor and make common?
 
+
+# Helper Function
 def update_file(file, line):
     old_line = line
 
@@ -23,10 +27,12 @@ def update_file(file, line):
         file_contents.replace(old_line, line)
         f.write(file_contents)
 
+
+# Views
 @login_required
 def tasks(request):
     files = User.objects.get(username=request.user).file_set.all()
-    user_settings = User.objects.get(username=request.user).usersettings_set.all()
+    profile_settings = User.objects.get(username=request.user).profilesettings_set.all()
 
     all_tasks_dict = {}
 
@@ -34,7 +40,7 @@ def tasks(request):
         with file.upload.open('r') as f:
             lines = f.readlines()
             for line in lines:
-                m = KeywordPreprocessor.check_for_patterns(line, user_settings)
+                m = KeywordPreprocessor.check_for_patterns(line, profile_settings)
                 if m:
                     if file.title not in all_tasks_dict.keys():
                         all_tasks_dict[file.title] = []

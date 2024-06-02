@@ -14,10 +14,10 @@ class KeywordExtension(Extension):
 
     def __init__(self, **kwargs):
         self.config = {
-            'user_settings' : ['placeholder']
+            'profile_settings' : ['placeholder']
         }
         super(KeywordExtension, self).__init__(**kwargs)
 
     def extendMarkdown(self, md):
-        md.preprocessors.register(KeywordPreprocessor(md, self.config['user_settings'][0]), ITEM, PRIORITY)
-        md.postprocessors.register(KeywordPostprocessor(md, self.config['user_settings'][0]), ITEM, PRIORITY)
+        md.preprocessors.register(KeywordPreprocessor(md, self.config['profile_settings'][0]), ITEM, PRIORITY)
+        md.postprocessors.register(KeywordPostprocessor(md, self.config['profile_settings'][0]), ITEM, PRIORITY)
