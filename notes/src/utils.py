@@ -1,3 +1,10 @@
+# Utilities
+
+
+# Constants
+ITEM = "ITEM"
+PRIORITY = 1
+
 CB_TYPE = "CheckButton"
 CB_TEMPLATE = """
 <div>

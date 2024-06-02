@@ -23,7 +23,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect("notes:index")
+            return redirect("index")
     else:
         form = PasswordChangeForm(user=request.user)
 
@@ -40,7 +40,7 @@ def change_password(request):
 def delete(request):
     request.user.delete()
 
-    return redirect("notes:index")
+    return redirect("index")
 
 
 @login_required
@@ -52,7 +52,7 @@ def edit(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='profiles:profile_view')
+            return redirect(to='profiles:index')
     else:
         form = ProfileUpdateForm(instance=request.user)
 
@@ -92,7 +92,7 @@ def settings(request):
         formset = ProfileSettingsFormSet(request.POST, instance=request.user)
         if formset.is_valid():
             formset.save()
-            return redirect("notes:index")
+            return redirect("index")
     else:
         formset = ProfileSettingsFormSet(instance=request.user)
 

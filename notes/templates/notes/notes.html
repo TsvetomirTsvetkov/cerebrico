@@ -4,21 +4,21 @@
 
 <div class="container vh-100">
     <h1 class="display-5 text-center">
-        <b>FILES</b>
+        <b>NOTES</b>
     </h1>
 
-    {% if files %}
+    {% if notes %}
         <div class="list-group justify-content-center">
             <li class="list-group-item list-group-item-secondary">Name</li>
-            {% for file in files %}
+            {% for note in notes %}
                 <div class="d-flex">
-                    <a href="{% url 'notes:note' file.title %}" class="list-group-item list-group-item-action "><b>{{ file.title }}</b>
+                    <a href="{% url 'notes:note' note.title %}" class="list-group-item list-group-item-action "><b>{{ note.title }}</b>
                         <div class="d-flex">
-                            <small>{{ file.created_at.date }}</small>
+                            <small>{{ note.created_at.date }}</small>
                         </div>
                     </a>
-                    <a href="{% url 'notes:delete' file.title %}" class="btn btn-sm btn-light d-inline-flex align-items-center">
-                        <img src="{% static 'notes/icons/trash.svg' %}" alt="Create">
+                    <a href="{% url 'notes:delete' note.title %}" class="btn btn-sm btn-light d-inline-flex align-items-center">
+                        <img src="{% static 'icons/trash.svg' %}" alt="Delete">
                     </a>
                 </div>
             {% endfor %}
@@ -26,7 +26,7 @@
         
     {% else %}
         <div class="w-100 text-center">
-            <h5>You still don't have any files.</h5>
+            <h5>You still don't have any notes.</h5>
             <h6>Go and create them <a href="{% url 'notes:create' %}">here</a>.</h6>
         </div>
     {% endif %}

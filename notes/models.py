@@ -10,7 +10,7 @@ from notes.utils import user_directory_path
 
 
 # Models
-class File(models.Model):
+class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     upload = models.FileField(upload_to=user_directory_path, validators=[FileExtensionValidator(allowed_extensions=['md', 'txt'])])
@@ -20,7 +20,7 @@ class File(models.Model):
         return str(self.title)
     
     def save(self, *args, **kwargs):
-        # Make file title url-friendly
+        # Make note title url-friendly
         # self.title = self.upload.name
         if " " in self.title:
             self.title = self.title.replace(" ", "-")
@@ -32,5 +32,5 @@ class File(models.Model):
         super().delete(*args, *kwargs)
 
     class Meta:
-      # Make file names unique per user
+      # Make note names unique per user
       unique_together = ["user", "title"]

@@ -8,17 +8,18 @@ from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404, redirect, render
 
 # Internal Imports
-from notes.forms import TextForm, UploadFileForm
-from notes.models import File
+from notes.forms import TextForm, UploadNoteForm
+from notes.models import Note
 from notes.src.extensions import KeywordExtension
 
+
 # Utility functions
-def parse_file(file_contents, profile_settings):
+def parse_note(note_contents, profile_settings):
     parser = Markdown(extensions=[KeywordExtension(profile_settings=profile_settings)])
 
-    parsed_file = parser.reset().convert(file_contents)
+    parsed_note = parser.reset().convert(note_contents)
 
-    return parsed_file
+    return parsed_note
 
 
 # Views
@@ -33,9 +34,9 @@ def create(request):
             content = text_form.cleaned_data["content"]
             content_file = ContentFile(name=title, content=content)
             try:
-                file = File(user=request.user, title=title, upload=content_file)
-                file.save()
-                return redirect("notes:note", file)
+                note = Note(user=request.user, title=title, upload=content_file)
+                note.save()
+                return redirect("notes:note", note)
             except Exception as err:
                 print(err)
                 text_form = TextForm(request.POST)
@@ -55,32 +56,32 @@ def create(request):
 
 @login_required
 def delete(request, title):
-    file = get_object_or_404(request.user.file_set, title=title)
-    file.delete()
+    note = get_object_or_404(request.user.note_set, title=title)
+    note.delete()
 
     return redirect("notes:notes")
 
 
 @login_required
 def edit(request, title):
-    file = get_object_or_404(request.user.file_set, title=title)
+    note = get_object_or_404(request.user.note_set, title=title)
 
-    with open(file.upload.path, 'r') as f:
-        file_content = f.read()
+    with open(note.upload.path, 'r') as f:
+        note_content = f.read()
 
-    form = TextForm(initial={'title': file.title, 'content': file_content})
+    form = TextForm(initial={'title': note.title, 'content': note_content})
 
     if request.method == "POST":
         form = TextForm(request.POST)
         if form.is_valid():
             try:
-                file.title = form["title"].value()
-                file.upload.name = form["title"].value()
-                # TODO: Actually move file?
-                with open(file.upload.path, 'w') as f:
+                note.title = form["title"].value()
+                note.upload.name = form["title"].value()
+                # TODO: Actually move note?
+                with open(note.upload.path, 'w') as f:
                     f.write(form["content"].value())
-                file.save()
-                return redirect("notes:note", file.title)
+                note.save()
+                return redirect("notes:note", note.title)
             except Exception:
                 formset = TextForm()
     else:
@@ -90,7 +91,7 @@ def edit(request, title):
         request,
         'notes/edit.html',
         {
-            "file": file,
+            "note": note,
             "form": form
         }
     )
@@ -98,15 +99,14 @@ def edit(request, title):
 
 @login_required
 def upload(request):
-    upload_form = UploadFileForm(request.POST, request.FILES)
+    upload_form = UploadNoteForm(request.POST, request.FILES)
 
     if request.method == "POST":
         if upload_form.is_valid():
+            # TODO: Verify contents
             upload_form.save()
-            # TODO: Verify extension / contents
-
     else:
-        upload_form = UploadFileForm()
+        upload_form = UploadNoteForm()
 
     return render(
         request,
@@ -119,21 +119,21 @@ def upload(request):
 
 @login_required
 def note(request, title):
-    file = get_object_or_404(request.user.file_set, title=title)
+    get_note = get_object_or_404(request.user.note_set, title=title)
 
     profile_settings = User.objects.get(username=request.user).profilesettings_set.all()
 
-    with open(file.upload.path, 'r') as f:
-        file_contents = f.read()
+    with open(get_note.upload.path, 'r') as f:
+        note_contents = f.read()
 
-    parsed_file = parse_file(file_contents, profile_settings)
+    parsed_note = parse_note(note_contents, profile_settings)
 
     return render(
         request,
         'notes/note.html',
         {
-            "file": file,
-            "parsed_file": parsed_file,
+            "note": get_note,
+            "parsed_note": parsed_note,
             "profile_settings": profile_settings
         }
     )
@@ -141,12 +141,12 @@ def note(request, title):
 
 @login_required
 def notes(request):
-    files = User.objects.get(username=request.user).file_set.all()
+    get_notes = User.objects.get(username=request.user).note_set.all()
 
     return render(
         request,
         'notes/notes.html',
         {
-            "files": files, 
+            "notes": get_notes, 
         }
     )

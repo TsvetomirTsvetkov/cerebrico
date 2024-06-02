@@ -1,12 +1,10 @@
+# External Imports
 from markdown.extensions import Extension
 
-from .preprocessors import KeywordPreprocessor
-from .postprocessors import KeywordPostprocessor
-
-
-# TODO: Cleanup / Check how this should be handled
-ITEM = "ITEM"
-PRIORITY = 1
+# Internal Imports
+from notes.src.preprocessors import KeywordPreprocessor
+from notes.src.postprocessors import KeywordPostprocessor
+from notes.src.utils import ITEM, PRIORITY
 
 
 class KeywordExtension(Extension):

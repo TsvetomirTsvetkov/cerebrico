@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 
 # Internal Imports
-from notes.models import File
+from notes.models import Note
 
 
 # Forms
@@ -15,7 +15,7 @@ class TextForm(forms.Form):
     content = forms.CharField(label="Notes", widget=forms.Textarea)
 
 
-class UploadFileForm(ModelForm):
+class UploadNoteForm(ModelForm):
     class Meta:
-        model = File
+        model = Note
         fields = ["upload"]

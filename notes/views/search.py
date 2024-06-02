@@ -10,22 +10,22 @@ from django.shortcuts import render
 
 # Views
 def search(request):
-    found_files = []
+    found_notes = []
     error = None
 
     query = request.GET.get('q')
 
     if query:
         if request.user.is_authenticated:
-            files = User.objects.get(username=request.user).file_set.all()
-            for file in files:
-                with open(file.upload.path, 'r') as f:
-                    file_contents = f.read()
+            notes = User.objects.get(username=request.user).note_set.all()
+            for note in notes:
+                with open(note.upload.path, 'r') as f:
+                    note_contents = f.read()
 
-                if re.search(query, file.title, re.IGNORECASE) or \
-                   re.search(query, file_contents, re.IGNORECASE):
-                    found_files.append(file)
-            if found_files == []:
+                if re.search(query, note.title, re.IGNORECASE) or \
+                   re.search(query, note_contents, re.IGNORECASE):
+                    found_notes.append(note)
+            if found_notes == []:
                 error = "Sorry, we couldn't find anything..."
         else:
             error = "Please, sign up or log in if you want to search through your notes."
@@ -36,7 +36,7 @@ def search(request):
         request,
         'notes/search.html',
         {
-            "found_files": found_files, 
+            "found_notes": found_notes, 
             "error": error,
         }
     )

@@ -7,18 +7,18 @@
         <b>Search</b>
     </h1>
 
-    {% if found_files %}
+    {% if found_notes %}
         <div class="list-group justify-content-center">
             <li class="list-group-item list-group-item-secondary">Name</li>
-            {% for file in found_files %}
+            {% for note in found_notes %}
                 <div class="d-flex">
-                    <a href="{% url 'notes:note' file.title %}" class="list-group-item list-group-item-action "><b>{{ file.title }}</b>
+                    <a href="{% url 'notes:note' note.title %}" class="list-group-item list-group-item-action "><b>{{ note.title }}</b>
                         <div class="d-flex">
-                            <small>{{ file.created_at.date }}</small>
+                            <small>{{ note.created_at.date }}</small>
                         </div>
                     </a>
-                    <a href="{% url 'notes:delete' file.title %}" class="btn btn-sm btn-light d-inline-flex align-items-center">
-                        <img src="{% static 'notes/icons/trash.svg' %}" alt="Create">
+                    <a href="{% url 'notes:delete' note.title %}" class="btn btn-sm btn-light d-inline-flex align-items-center">
+                        <img src="{% static 'icons/trash.svg' %}" alt="Create">
                     </a>
                 </div>
             {% endfor %}

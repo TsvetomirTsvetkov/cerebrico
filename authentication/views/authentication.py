@@ -17,7 +17,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
     
     def get_success_url(self):
-        return reverse_lazy('notes:index')
+        return reverse_lazy('index')
     
     def form_invalid(self, form):
         messages.error(self.request,'Invalid username or password')
@@ -28,7 +28,7 @@ class CustomLoginView(LoginView):
 def signout(request):
     logout(request)
 
-    return redirect('notes:index')
+    return redirect('index')
 
 
 def signup(request):

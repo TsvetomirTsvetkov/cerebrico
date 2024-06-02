@@ -1,7 +1,8 @@
+# External Imports
 from markdown.postprocessors import Postprocessor
 
-from .utils import TYPE_DICT
-from .utils import CB_TYPE
+# Internal Imports
+from notes.src.utils import CB_TYPE, TYPE_DICT
 
 
 class KeywordPostprocessor(Postprocessor):
@@ -12,8 +13,6 @@ class KeywordPostprocessor(Postprocessor):
         self.__profile_settings = profile_settings
 
     def run(self, lines):
-        # Testing
-        # lines = super().run(lines)
         # Create a dict of profile_settings
         items_dict = {}
         for item in self.__profile_settings:

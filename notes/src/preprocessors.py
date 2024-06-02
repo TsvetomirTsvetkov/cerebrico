@@ -1,6 +1,9 @@
+# External Imports
 import re
-
 from markdown.preprocessors import Preprocessor
+
+# Internal Imports
+
 
 
 class KeywordPreprocessor(Preprocessor):

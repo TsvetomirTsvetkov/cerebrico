@@ -5,12 +5,12 @@
 <div class="container w-75 vh-100">
     <div class="text-center m-1">
         <h1 class="display-5">
-            <b>{{ file.title }}</b>
+            <b>{{ note.title }}</b>
         </h1>
         <p>
-            [{{ file.created_at.date }}]
+            [{{ note.created_at.date }}]
         </p>
-        <a class="text-center btn btn-dark m-1" href="{% url 'notes:note' file.title %}">Back</a>
+        <a class="text-center btn btn-dark m-1" href="{% url 'notes:note' note.title %}">Back</a>
     </div>
 
     <form method="post">

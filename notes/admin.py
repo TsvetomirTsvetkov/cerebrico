@@ -4,8 +4,8 @@
 from django.contrib import admin
 
 # Internal Imports
-from notes.models import File
+from notes.models import Note
 
 
 # Register Models
-admin.site.register(File)
+admin.site.register(Note)

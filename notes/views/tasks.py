@@ -10,7 +10,7 @@ from notes.src.preprocessors import KeywordPreprocessor # TODO: Possibly remove 
 
 
 # Helper Function
-def update_file(file, line):
+def update_note(note, line):
     old_line = line
 
     try:
@@ -22,35 +22,35 @@ def update_file(file, line):
         # TODO: Possibly handle this
         pass
 
-    with open(file.upload.path, 'rw') as f:
-        file_contents = f.read()
-        file_contents.replace(old_line, line)
-        f.write(file_contents)
+    with open(note.upload.path, 'rw') as f:
+        note_contents = f.read()
+        note_contents.replace(old_line, line)
+        f.write(note_contents)
 
 
 # Views
 @login_required
 def tasks(request):
-    files = User.objects.get(username=request.user).file_set.all()
+    notes = User.objects.get(username=request.user).note_set.all()
     profile_settings = User.objects.get(username=request.user).profilesettings_set.all()
 
     all_tasks_dict = {}
 
-    for file in files:
-        with file.upload.open('r') as f:
+    for note in notes:
+        with note.upload.open('r') as f:
             lines = f.readlines()
             for line in lines:
                 m = KeywordPreprocessor.check_for_patterns(line, profile_settings)
                 if m:
-                    if file.title not in all_tasks_dict.keys():
-                        all_tasks_dict[file.title] = []
-                    all_tasks_dict[file.title].append(line)
+                    if note.title not in all_tasks_dict.keys():
+                        all_tasks_dict[note.title] = []
+                    all_tasks_dict[note.title].append(line)
 
     return render(
         request,
         'notes/tasks.html',
         {
-            "files": files, 
+            "note": note, 
             "all_tasks_dict": all_tasks_dict
         }
     )
