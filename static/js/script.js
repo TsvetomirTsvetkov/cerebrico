@@ -1,10 +1,7 @@
 function deleteProfile() {
-    // var language = JSON.parse("{{ LANGUAGE_CODE|escapejs }}");
-    //console.log({{LANGUAGE_CODE}});
-    // var language = document.getElementById('lang').getAttribute('data-variable');
-    var language = document.getElementsByTagName('html')[0].getAttribute('lang');
-    console.log(language)
-    if (language == 'gb'){
+    var lang = document.documentElement.getAttribute('lang');
+
+    if (lang == 'en'){
         if (confirm("Do you really want to delete your profile?")) {
             location.href = '/profile/delete';
         }

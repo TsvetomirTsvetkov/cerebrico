@@ -3,7 +3,7 @@
 {% load i18n %}
 
 <!doctype html>
-<html lang="{% get_current_language as LANGUAGE_CODE %}">
+<html lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,8 +61,7 @@
                             </button>
                         </form>
                     {% endif %}
-                        
-                    <!-- <div id="lang" data-variable="{{ LANGUAGE_CODE }}"></div>  -->
+
                 </ul>
             </div>
         </nav>
