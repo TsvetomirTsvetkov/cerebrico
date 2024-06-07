@@ -36,6 +36,8 @@ def create(request):
             try:
                 note = Note(user=request.user, title=title, upload=content_file)
                 note.save()
+
+                print(note.upload.path)
                 return redirect("notes:note", note)
             except Exception as err:
                 print(err)
@@ -65,7 +67,8 @@ def delete(request, title):
 @login_required
 def edit(request, title):
     note = get_object_or_404(request.user.note_set, title=title)
-
+    print('############EDIT')
+    print(note.upload.path)
     with open(note.upload.path, 'r') as f:
         note_content = f.read()
 
@@ -75,12 +78,17 @@ def edit(request, title):
         form = TextForm(request.POST)
         if form.is_valid():
             try:
+                print('Before title', note.upload.path)
                 note.title = form["title"].value()
-                note.upload.name = form["title"].value()
+                print('After title', note.upload.path)
+                # note.upload.name = form["title"].value()
+                print('After upload.name', note.upload.path)
                 # TODO: Actually move note?
                 with open(note.upload.path, 'w') as f:
+                    print('In Context Manager', note.upload.path)
                     f.write(form["content"].value())
-                note.save()
+                    note.save()
+                    print('After Save', note.upload.path)
                 return redirect("notes:note", note.title)
             except Exception:
                 formset = TextForm()
@@ -122,7 +130,7 @@ def note(request, title):
     get_note = get_object_or_404(request.user.note_set, title=title)
 
     profile_settings = User.objects.get(username=request.user).profilesettings_set.all()
-
+    print(get_note.upload.path)
     with open(get_note.upload.path, 'r') as f:
         note_contents = f.read()
 

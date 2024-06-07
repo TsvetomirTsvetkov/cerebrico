@@ -13,17 +13,3 @@ function deleteProfile() {
     }
     
 }
-
-
-
-function completeTask(str){
-    // var variable = document.getElementById("tasks");
-
-    var inputs = document.querySelectorAll("input[type='checkbox']");
-    for(var i = 0; i < inputs.length; i++) {
-        if (inputs[i].checked){
-            console.log(inputs[i].id)
-            console.log(inputs[i].value)
-        }
-    }
-}

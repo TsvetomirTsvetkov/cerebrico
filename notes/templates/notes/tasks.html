@@ -10,12 +10,15 @@
     {% if all_tasks_dict %}
         <div class="card border m-3">
             <div class="card-body" id="tasks"> 
+                <form id="formName" action="{% url 'tasks' %}" method="post">
+                    {% csrf_token %}
                     {% for key, values in all_tasks_dict.items %}
                         {% for value in values %}
-                            <input type='checkbox' id="{{ forloop.counter0 }}" value="{{value}}" onclick="completeTask()">{{ value }}</input><br>
+                            <input type='checkbox' name="{{key}}_cb_{{ forloop.counter0 }}" id="{{ forloop.counter0 }}" value="{{value}}" onchange="document.getElementById('formName').submit()">{{ value }}</input><br>
                             <!-- <input type="hidden" id="variable" name="variable" value=""> -->
                         {% endfor %}
                     {% endfor %}
+                </form>
             </div>
         </div>
     {% else %}
