@@ -14,7 +14,7 @@
         <p>
             [{{ note.created_at.date }}]
         </p>
-        <a class="text-center btn btn-dark m-1" href="{% url 'notes:edit' note.title %}">Edit</a>
+        <a class="text-center btn btn-dark m-1" href="{% url 'notes:edit' note.title %}">{% translate "Edit" %}</a>
     </div>
     <div class="card border m-3">
         <div class="card-body">

@@ -4,12 +4,12 @@
 
 <div class="container vh-100">
     <h1 class="display-5 text-center">
-        <b>Search</b>
+        <b>{% translate "Search" %}</b>
     </h1>
 
     {% if found_notes %}
         <div class="list-group justify-content-center">
-            <li class="list-group-item list-group-item-secondary">Name</li>
+            <li class="list-group-item list-group-item-secondary">{% translate "Name" %}</li>
             {% for note in found_notes %}
                 <div class="d-flex">
                     <a href="{% url 'notes:note' note.title %}" class="list-group-item list-group-item-action "><b>{{ note.title }}</b>

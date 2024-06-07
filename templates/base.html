@@ -1,8 +1,9 @@
 {% load static %}
 {% load crispy_forms_tags %} 
+{% load i18n %}
 
 <!doctype html>
-<html lang="en">
+<html lang="{% get_current_language as LANGUAGE_CODE %}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,34 +19,54 @@
                     <b>Cerebrico</b>
                 </a>
                 <form class="d-flex" action="{% url 'search' %}" method="get" role="search">
-                    <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-sm btn-dark" type="submit">Search</button>
+                    <input class="form-control me-2" name="q" type="search" placeholder="{% translate 'Search' %}" aria-label="Search">
+                    <button class="btn btn-sm btn-dark" type="submit">{% translate "Search" %}</button>
                 </form>
-                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbartop" aria-controls="navbartop" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbartop" aria-controls="navbartop" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse offset-sm-1" id="navbartop">
                 <ul class="navbar-nav ms-auto flex gap-3">
-                    
+
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profiles:index' %}"><b>My profile</b></a>
+                            <a class="nav-link" href="{% url 'profiles:index' %}"><b>{% translate "My profile" %}</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'authentication:signout' %}">Sign out</a>
+                            <a class="nav-link" href="{% url 'authentication:signout' %}">{% translate "Sign out" %}</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'authentication:login' %}">Log in</a>
+                            <a class="nav-link" href="{% url 'authentication:login' %}">{% translate "Log in" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'authentication:signup' %}"><b>Sign up</b></a>
+                            <a class="nav-link" href="{% url 'authentication:signup' %}"><b>{% translate "Sign up" %}</b></a>
                         </li>
                     {% endif %}
+                
+                    
+                    {% if LANGUAGE_CODE == 'en' %}
+                        <form class="d-inline-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <button class="btn btn-with-image btn-sm" type="submit" name="language" value="bg">
+                                <img src="{% static 'icons/bg.svg' %}" class="img-fluid" alt="bg">
+                            </button>
+                        </form>
+                    {% else %}
+                        <form class="d-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <button class="btn btn-sm btn-with-image" type="submit" name="language" value="en">
+                                <img src="{% static 'icons/en.svg' %}" class="img-fluid" alt="en">
+                            </button>
+                        </form>
+                    {% endif %}
+                        
+                    <!-- <div id="lang" data-variable="{{ LANGUAGE_CODE }}"></div>  -->
                 </ul>
             </div>
         </nav>
+        
         {% if user.is_authenticated %}
             <div class="fixed-left-column text-center bg-white border-end position-fixed">
                 <ul class="nav flex-column">

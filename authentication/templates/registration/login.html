@@ -8,13 +8,13 @@
         <div class="form-group pt-5">
             <div class='card p-3 bg-white'>
                 <h1 class="text-center">
-                    <b>Log in</b>
+                    <b>{% translate "Log in" %}</b>
                 </h1>
                 {{ form|crispy }}
-                <button type="submit" value="login" class="btn btn-dark">Log in</button>
+                <button type="submit" value="login" class="btn btn-dark">{% translate "Log in" %}</button>
                 <div class="card-footer bg-white">
                     <div class="d-flex text-center justify-content-center">
-                        <p>Don't have an account?<br><a href="{% url 'authentication:signup' %}">Sign up</a></p>
+                        <p>{% translate "Don't have an account?" %}<br><a href="{% url 'authentication:signup' %}">{% translate "Sign up" %}</a></p>
                     </div>
                 </div>
             </div>

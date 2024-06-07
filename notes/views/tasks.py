@@ -51,6 +51,7 @@ def tasks(request):
         'notes/tasks.html',
         {
             "note": note, 
-            "all_tasks_dict": all_tasks_dict
+            "all_tasks_dict": all_tasks_dict,
+            "counter": 0
         }
     )

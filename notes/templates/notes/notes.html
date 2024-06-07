@@ -4,12 +4,12 @@
 
 <div class="container vh-100">
     <h1 class="display-5 text-center">
-        <b>NOTES</b>
+        <b>{% translate "NOTES" %}</b>
     </h1>
 
     {% if notes %}
         <div class="list-group justify-content-center">
-            <li class="list-group-item list-group-item-secondary">Name</li>
+            <li class="list-group-item list-group-item-secondary">{% translate "Name" %}</li>
             {% for note in notes %}
                 <div class="d-flex">
                     <a href="{% url 'notes:note' note.title %}" class="list-group-item list-group-item-action "><b>{{ note.title }}</b>
@@ -26,8 +26,8 @@
         
     {% else %}
         <div class="w-100 text-center">
-            <h5>You still don't have any notes.</h5>
-            <h6>Go and create them <a href="{% url 'notes:create' %}">here</a>.</h6>
+            <h5>{% translate "You still don't have any notes." %}</h5>
+            <h6>{% translate "Go and create them" %} <a href="{% url 'notes:create' %}">{% translate "here" %}</a>.</h6>
         </div>
     {% endif %}
 </div>

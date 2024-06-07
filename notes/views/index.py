@@ -3,26 +3,27 @@ import random
 
 # Django Imports
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
 # Internal Imports
 
 
 # Helper Constants
 TIPS = [
-    "Go to the \"Settings\" tab on the left and customize your keywords.",
-    "You can see all of your tasks in one place. They're in the \"Tasks\" section.",
-    "Click on the folder icon on the left and you\'ll see all of your notes.",
-    "If you want to change your username, password or other profile information, click on \"My profile\" at the top."
+    _("Go to the \"Settings\" tab on the left and customize your keywords."),
+    _("You can see all of your tasks in one place. They're in the \"Tasks\" section."),
+    _("Click on the folder icon on the left and you\'ll see all of your notes."),
+    _("If you want to change your username, password or other profile information, click on \"My profile\" at the top.")
 ]
 
 QUOTES = [
-    "Well you know, for my experience, your head's for having ideas, not for holding them.",
-    "Write down the thoughts of the moment. Those that come unsought for are commonly the most valuable."
+    _("Well you know, for my experience, your head's for having ideas, not for holding them."),
+    _("Write down the thoughts of the moment. Those that come unsought for are commonly the most valuable.")
 ]
 
 AUTHORS = [
-    "David Allen",
-    "Francis Bacon",
+    _("David Allen"),
+    _("Francis Bacon"),
 ]
 
 

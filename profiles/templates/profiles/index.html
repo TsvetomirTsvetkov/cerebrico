@@ -4,21 +4,21 @@
 
 <div class="container w-50">
     <h1 class="display-5 text-center">
-        <b>My Profile</b>
+        <b>{% translate "My profile" %}</b>
     </h1>
     <form method="post">
         {% csrf_token %}
         <div class='card p-3 bg-white mt-3'>
             {{ form|crispy }}
-            <a href="{% url 'profiles:edit' %}" class="btn w-100 mt-3 btn-dark">Edit</a>
+            <a href="{% url 'profiles:edit' %}" class="btn w-100 mt-3 btn-dark">{% translate "Edit" %}</a>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-center">
-                    <a href="{% url 'profiles:change_password' %}">Change Password</a>
+                    <a href="{% url 'profiles:change_password' %}">{% translate "Change Password" %}</a>
                 </div>
             </div>
         </div>
     </form>
-    <button class="btn w-100 mt-3 btn-outline-danger" onclick="deleteProfile()">Delete Profile</button>
+    <button class="btn w-100 mt-3 btn-outline-danger" onclick="deleteProfile()">{% translate "Delete Profile" %}</button>
 </div>
 
 {% endblock %}

@@ -10,7 +10,7 @@
         <p>
             [{{ note.created_at.date }}]
         </p>
-        <a class="text-center btn btn-dark m-1" href="{% url 'notes:note' note.title %}">Back</a>
+        <a class="text-center btn btn-dark m-1" href="{% url 'notes:note' note.title %}">{% translate "Back" %}</a>
     </div>
 
     <form method="post">
@@ -18,7 +18,7 @@
         <div class='card p-3 bg-white mt-3'>
             {{ form|crispy }}
         </div>
-        <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save">Save</button>
+        <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save">{% translate "Save" %}</button>
     </form>
 
 

@@ -1,0 +1,292 @@
+# Bulgarian Translations.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Cerebrico package.
+# FIRST AUTHOR tsvetomir.e.tsvetkov@gmail.com, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: tsvetomir.e.tsvetkov@gmail.com\n"
+"POT-Creation-Date: 2024-06-07 12:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Tsvetomir Tsvetkov tsvetomir.e.tsvetkov@gmail.com\n"
+"Language: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: authentication/templates/registration/login.html:11
+#: authentication/templates/registration/signup.html:17 templates/base.html:41
+msgid "Log in"
+msgstr "Влезте"
+
+#: authentication/templates/registration/login.html:17
+msgid "Don't have an account?"
+msgstr "Нямате акаунт?"
+
+#: authentication/templates/registration/login.html:17
+#: authentication/templates/registration/signup.html:11 templates/base.html:44
+msgid "Sign up"
+msgstr "Регистрирайте се"
+
+#: authentication/templates/registration/signup.html:17
+msgid "Already signed up?"
+msgstr "Вече сте се регистрирали?"
+
+#: notes/templates/notes/create.html:7
+msgid "CREATE"
+msgstr "СЪЗДАЙ"
+
+#: notes/templates/notes/create.html:13
+msgid "Create Note"
+msgstr "Създай Бележка"
+
+#: notes/templates/notes/create.html:16
+msgid "Or you can"
+msgstr "Или можете да"
+
+#: notes/templates/notes/create.html:16
+msgid "upload"
+msgstr "качите"
+
+#: notes/templates/notes/create.html:16
+msgid "a note"
+msgstr "бележка."
+
+#: notes/templates/notes/create.html:21
+msgid "A note with the same name already exists for this user."
+msgstr "Бележка със същото име вече съществува"
+
+#: notes/templates/notes/edit.html:13
+msgid "Back"
+msgstr "Назад"
+
+#: notes/templates/notes/edit.html:21 profiles/templates/profiles/edit.html:13
+#: profiles/templates/profiles/settings.html:18
+msgid "Save"
+msgstr "Запази"
+
+#: notes/templates/notes/index.html:13
+msgid "Are you ready?"
+msgstr "Готови ли сте?"
+
+#: notes/templates/notes/index.html:16
+msgid "Notes have never been easier."
+msgstr "Писането на бележи никога не е било по-лесно."
+
+#: notes/templates/notes/index.html:19
+msgid "Tip:"
+msgstr "Съвет:"
+
+#: notes/templates/notes/index.html:22
+msgid "Let's begin"
+msgstr "Да започваме"
+
+
+#: notes/templates/notes/index.html:34
+msgid "Welcome to"
+msgstr "Добре дошли в"
+
+#: notes/templates/notes/index.html:40
+msgid "Create."
+msgstr "Създавай."
+
+#: notes/templates/notes/index.html:41
+msgid "Control."
+msgstr "Контролирай."
+
+#: notes/templates/notes/index.html:42
+msgid "Capture."
+msgstr "Записвай."
+
+#: notes/templates/notes/index.html:52
+msgid "Join us"
+msgstr "Присъединете се към нас"
+
+#: notes/templates/notes/index.html:57
+msgid "Endless Possibilities"
+msgstr "Безкрайни Възможности"
+
+#: notes/templates/notes/index.html:60
+msgid "Utility-driven"
+msgstr "Практично"
+
+#: notes/templates/notes/index.html:61
+msgid "Smart"
+msgstr "Умно"
+
+#: notes/templates/notes/index.html:62
+msgid "Reliable"
+msgstr "Надеждно"
+
+#: notes/templates/notes/index.html:65
+msgid "A place for all people school, university and work."
+msgstr "Мястото за всички хора от училище, университет и работа."
+
+#: notes/templates/notes/index.html:68
+msgid "Take a moment and think about all the times when you've wasted time looking for information"
+msgstr "Помислете за момементите, когато сте губили време търсейки информация"
+
+#: notes/templates/notes/index.html:69
+msgid "Now imagine it's all in"
+msgstr "Сега си представете, че всичката е на"
+
+#: notes/templates/notes/index.html:70
+msgid "one place."
+msgstr "едно място."
+
+#: notes/templates/notes/note.html:17 profiles/templates/profiles/index.html:13
+msgid "Edit"
+msgstr "Промени"
+
+#: notes/templates/notes/notes.html:7
+msgid "NOTES"
+msgstr "БЕЛЕЖКИ"
+
+#: notes/templates/notes/notes.html:12 notes/templates/notes/search.html:12
+msgid "Name"
+msgstr "Име"
+
+#: notes/templates/notes/notes.html:29
+msgid "You still don't have any notes."
+msgstr "Все още нямате бележки."
+
+#: notes/templates/notes/notes.html:30
+msgid "Go and create them"
+msgstr "Отидете и ги създайте"
+
+#: notes/templates/notes/notes.html:30
+msgid "here"
+msgstr "тук"
+
+#: notes/templates/notes/search.html:7 templates/base.html:23
+msgid "Search"
+msgstr "Търси"
+
+#: notes/templates/notes/tasks.html:7
+msgid "TASKS"
+msgstr "ЗАДАЧИ"
+
+#: notes/templates/notes/tasks.html:22
+msgid "No Tasks found."
+msgstr "Не бяха намерени Задачи"
+
+#: notes/templates/notes/upload.html:7
+msgid "UPLOAD"
+msgstr "КАЧИ"
+
+#: notes/templates/notes/upload.html:13
+msgid "Upload Note"
+msgstr "Качете Бележка"
+
+#: notes/templates/notes/upload.html:16
+msgid "Or you can just "
+msgstr "Или можете просто да "
+
+#: notes/templates/notes/upload.html:16
+msgid "create"
+msgstr "създадете"
+
+#: notes/templates/notes/upload.html:16
+msgid "one"
+msgstr "бележка"
+
+#: profiles/templates/profiles/change_password.html:7
+#: profiles/templates/profiles/edit.html:7
+#: profiles/templates/profiles/index.html:7
+msgid "My profile"
+msgstr "Моят профил"
+
+#: profiles/templates/profiles/change_password.html:13
+#: profiles/templates/profiles/edit.html:16
+#: profiles/templates/profiles/index.html:16
+msgid "Change Password"
+msgstr "Променете Парола"
+
+#: profiles/templates/profiles/edit.html:21
+#: profiles/templates/profiles/index.html:21
+msgid "Delete Profile"
+msgstr "Изтрий Профил"
+
+#: profiles/templates/profiles/settings.html:7
+msgid "SETTINGS"
+msgstr "НАСТРОЙКИ"
+
+#: templates/404.html:10
+msgid "The page you were looking for could not be found."
+msgstr "Страницата, която търсите не беше намерена."
+
+#: templates/base.html:37
+msgid "Sign out"
+msgstr "Излез"
+
+
+#: notes/views/index.py:13
+msgid "Go to the \"Settings\" tab on the left and customize your keywords."
+msgstr "Отидете на \"Настройки\" вляво и персонализирайте вашите ключови думи."
+
+#: notes/views/index.py:14
+msgid "You can see all of your tasks in one place. They're in the \"Tasks\" section."
+msgstr "Можете да видите всичките си задачи на едно място. Те са в раздел \"Задачи\"."
+
+#: notes/views/index.py:15
+msgid "Click on the folder icon on the left and you'll see all of your notes."
+msgstr "Натиснете върху папката вляво и ще видите всичките си бележки."
+
+#: notes/views/index.py:16
+msgid "If you want to change your username, password or other profile information, click on \"My profile\" at the top."
+msgstr "Ако искате да промените Вашето потребителско име, парола или друга информация, натиснете върху \"Моят профил\" в горната част на страницата."
+
+#: notes/views/index.py:20
+msgid "Well you know, for my experience, your head's for having ideas, not for holding them."
+msgstr "Е, нали знаеш, от моя опит главата ти е, за да ражда идеи, а не за да ги държи"
+
+#: notes/views/index.py:21
+msgid "Write down the thoughts of the moment. Those that come unsought for are commonly the most valuable."
+msgstr "Запишете мислите на момента. Тези, които идват нетърсени, обикновено са най-ценните."
+
+#: notes/views/index.py:25
+msgid "David Allen"
+msgstr "Дейвид Алън"
+
+#: notes/views/index.py:26
+msgid "Francis Bacon"
+msgstr "Франсис Бейкън"
+
+#: notes/forms.py:14
+msgid "Title"
+msgstr "Заглавие"
+
+#: notes/forms.py:15
+msgid "Notes"
+msgstr "Бележки"
+
+#: notes/forms.py:21
+msgid "Upload"
+msgstr "Прикачи"
+
+
+#: profiles/views/profile.py:88
+msgid "Option"
+msgstr "Име"
+
+#: profiles/views/profile.py:89
+msgid "Type"
+msgstr "Тип"
+
+#: profiles/views/profile.py:90
+msgid "Keyword"
+msgstr "Ключова дума"
+
+#: profiles/views/profile.py:91
+msgid "Separator"
+msgstr "Разделител"
+
+#: profiles/views/profile.py:92
+msgid "Is prefix"
+msgstr "Представка"
+
+#: profiles/views/profile.py:93
+msgid "Delete"
+msgstr "Изтрий"

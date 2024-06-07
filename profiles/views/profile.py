@@ -1,13 +1,13 @@
 # External Imports
 
 # Django Imports
-from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.forms import inlineformset_factory
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext_lazy as _
 
 # Internal Imports
 from profiles.forms import ProfileUpdateForm 
@@ -51,7 +51,6 @@ def edit(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your profile is updated successfully')
             return redirect(to='profiles:index')
     else:
         form = ProfileUpdateForm(instance=request.user)
@@ -81,10 +80,20 @@ def index(request):
 
 @login_required
 def settings(request):
+    labels = {
+        'option': _('Option'), 
+        'type': _('Type'), 
+        'keyword': _('Keyword'), 
+        'separator': _('Separator'), 
+        'is_prefix': _('Is prefix'), 
+        'delete': _('Delete')
+    }
+
     ProfileSettingsFormSet = inlineformset_factory(
         User, 
         ProfileSettings, 
         fields=["option", "type", "keyword", "separator", "is_prefix"], 
+        labels=labels,
         extra=1
     )
 

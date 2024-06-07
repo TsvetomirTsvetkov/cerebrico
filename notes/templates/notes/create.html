@@ -10,15 +10,15 @@
         <div class='card p-3 bg-white mt-3'>
             {% csrf_token %}
             {{ text_form|crispy }}
-            <button type="submit" type="submit" class="btn mt-3 btn-dark">Create Note</button>
+            <button type="submit" type="submit" class="btn mt-3 btn-dark">{% translate "Create Note" %}</button>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-center text-center">
-                    <p>Or you can <a href="{% url 'notes:upload' %}"><b>upload</b></a> a note</p>
+                    <p>{% translate "Or you can" %} <a href="{% url 'notes:upload' %}"><b>{% translate "upload" %}</b></a> {% translate "a note" %}</p>
                 </div>
             </div> 
             {% if save_error %}
             <div class="alert alert-danger">
-                A note with the same name already exists for this user.
+                {% translate "A note with the same name already exists for this user." %}
             </div>
             {% endif %}
         </div>

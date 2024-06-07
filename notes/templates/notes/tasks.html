@@ -4,22 +4,23 @@
 <div class="container w-75 vh-100">
     <div class="text-center">
         <h1 class="display-5">
-            <b>TASKS</b>
+            <b>{% translate "TASKS" %}</b>
         </h1>
     </div>
     {% if all_tasks_dict %}
         <div class="card border m-3">
-            <div class="card-body"> 
+            <div class="card-body" id="tasks"> 
                     {% for key, values in all_tasks_dict.items %}
                         {% for value in values %}
-                            <input type='checkbox'{% if value %} checked {% endif %}>{{ value }}</input><br>
+                            <input type='checkbox' id="{{ forloop.counter0 }}" value="{{value}}" onclick="completeTask()">{{ value }}</input><br>
+                            <!-- <input type="hidden" id="variable" name="variable" value=""> -->
                         {% endfor %}
                     {% endfor %}
             </div>
         </div>
     {% else %}
         <div class="text-center">
-            No Tasks found.
+            {% translate "No Tasks found." %}
         </div>
     {% endif %}
 </div>

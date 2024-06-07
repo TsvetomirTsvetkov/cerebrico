@@ -10,10 +10,10 @@
         <div class='card p-3 bg-white mt-3'>
             {% csrf_token %}
             {{ upload_form|crispy }}
-            <button type="submit" type="submit" class="btn mt-3 btn-dark">Upload File</button>
+            <button type="submit" type="submit" class="btn mt-3 btn-dark">{% translate "Upload Note" %}</button>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-center text-center">
-                    <p>Or you can just <a href="{% url 'notes:create' %}"><b>create</b></a> one</p>
+                    <p>{% translate "Or you can just " %}<a href="{% url 'notes:create' %}"><b>{% translate "create" %}</b></a> {% translate "one" %}</p>
                 </div>
             </div> 
         </div>
