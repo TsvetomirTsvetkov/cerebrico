@@ -30,8 +30,6 @@ class KeywordPostprocessor(Postprocessor):
                 except ValueError:
                     pass
 
-            # lines = self.__create_checkbutton_element(split_string[1:], cnt) + '\n' + lines
-
         lines = '<br><h3>Notes</h3><br>' + lines
 
         # Handle top of the file
@@ -49,9 +47,9 @@ class KeywordPostprocessor(Postprocessor):
             if items_dict[key] == []:
                 pass
             else:
-                tasks += ('<br><h3>' + str(key) + ':</h3>')  # TODO: Possibly make it also some sort of a header tag?
+                tasks += ('<br><h3>' + str(key) + ':</h3>')
                 for el in items_dict[key]:
-                    # TODO: Handle type of object that needs creation and call relevant funct (dict with default types)
+                    # TODO: For v1.1 - Handle object type and call relevant func
                     tasks += self.__create_checkbutton_element(el, cnt)
                     cnt -= 1
         return tasks
@@ -59,7 +57,7 @@ class KeywordPostprocessor(Postprocessor):
     def __create_checkbutton_element(self, message, cnt):
         return TYPE_DICT[CB_TYPE].format(
             str(cnt), 
-            str(cnt), 
+            str(cnt),
             str(cnt), 
             message
         )
