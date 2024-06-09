@@ -290,3 +290,16 @@ msgstr "Представка"
 #: profiles/views/profile.py:93
 msgid "Delete"
 msgstr "Изтрий"
+
+
+#: notes/views/search.py:30
+msgid "Sorry, we couldn't find anything..."
+msgstr "Съжаляваме, но не можахме да открием нищо..."
+
+#: notes/views/search.py:32
+msgid "Please, sign up or log in if you want to search through your notes."
+msgstr "Моля, влезте или се регистирайте, ако искате да търсите сред вашите бележки."
+
+#: notes/views/search.py:34
+msgid "Please, write something first..."
+msgstr "Моля, напишете нещо преди да търсите..."

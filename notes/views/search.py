@@ -4,6 +4,7 @@ import re
 # Django Imports
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
 # Internal Imports
 
@@ -26,11 +27,11 @@ def search(request):
                    re.search(query, note_contents, re.IGNORECASE):
                     found_notes.append(note)
             if found_notes == []:
-                error = "Sorry, we couldn't find anything..."
+                error = _("Sorry, we couldn't find anything...")
         else:
-            error = "Please, sign up or log in if you want to search through your notes."
+            error = _("Please, sign up or log in if you want to search through your notes.")
     else:
-        error = "Please, write something first..."
+        error = _("Please, write something first...")
 
     return render(
         request,
