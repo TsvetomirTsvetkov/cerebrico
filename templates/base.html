@@ -47,19 +47,25 @@
                 
                     
                     {% if LANGUAGE_CODE == 'en' %}
-                        <form class="d-inline-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <button class="btn btn-with-image btn-sm" type="submit" name="language" value="bg">
-                                <img src="{% static 'icons/bg.svg' %}" class="img-fluid" alt="bg">
-                            </button>
-                        </form>
+                        <li class="nav-item">
+                            <small>BG</small>
+                            <form class="d-inline-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <button class="btn btn-with-image btn-sm" type="submit" name="language" value="bg">
+                                    <img src="{% static 'icons/bg.svg' %}" class="img-fluid" alt="bg">
+                                </button>
+                            </form>
+                        </li>
                     {% else %}
-                        <form class="d-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <button class="btn btn-sm btn-with-image" type="submit" name="language" value="en">
-                                <img src="{% static 'icons/en.svg' %}" class="img-fluid" alt="en">
-                            </button>
-                        </form>
+                        <li class="nav-item">
+                            <small>GB</small>
+                            <form class="d-inline-flex" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <button class="btn btn-sm btn-with-image" type="submit" name="language" value="en">
+                                    <img src="{% static 'icons/en.svg' %}" class="img-fluid" alt="en">
+                                </button>
+                            </form>
+                        </li>
                     {% endif %}
 
                 </ul>
