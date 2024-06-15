@@ -2,7 +2,6 @@
 from markdown.postprocessors import Postprocessor
 
 # Internal Imports
-from notes.src.utils import CB_TYPE, TYPE_DICT
 
 
 class KeywordPostprocessor(Postprocessor):
@@ -15,6 +14,7 @@ class KeywordPostprocessor(Postprocessor):
     def run(self, lines):
         # Create a dict of profile_settings
         items_dict = {}
+
         for item in self.__profile_settings:
             items_dict[item] = []
 
@@ -30,34 +30,21 @@ class KeywordPostprocessor(Postprocessor):
                 except ValueError:
                     pass
 
-        lines = '<br><h3>Notes</h3><br>' + lines
-
         # Handle top of the file
-        lines = self.__add_items(items_dict, self.md.htmlStash.html_counter) + lines
+        lines = self.__add_items(items_dict) + lines
 
         # Reset stash
         self.md.htmlStash.reset()
 
         return lines
 
-    def __add_items(self, items_dict, cnt):
+    def __add_items(self, items_dict):
         tasks = ""
 
         for key in items_dict.keys():
             if items_dict[key] == []:
                 pass
             else:
-                tasks += ('<br><h3>' + str(key) + ':</h3>')
                 for el in items_dict[key]:
-                    # TODO: For v1.1 - Handle object type and call relevant func
-                    tasks += self.__create_checkbutton_element(el, cnt)
-                    cnt -= 1
+                    tasks += ('<p hidden>' + " ".join([repr(key), el]) + '</p>')
         return tasks
-
-    def __create_checkbutton_element(self, message, cnt):
-        return TYPE_DICT[CB_TYPE].format(
-            str(cnt), 
-            str(cnt),
-            str(cnt), 
-            message
-        )

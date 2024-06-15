@@ -136,9 +136,13 @@ msgstr "Сега си представете, че всичката е на"
 msgid "one place."
 msgstr "едно място."
 
-#: notes/templates/notes/note.html:17 profiles/templates/profiles/index.html:13
+#: notes/templates/notes/note.html:17
 msgid "Edit"
 msgstr "Промени"
+
+#: notes/templates/notes/note.html:22
+msgid "Tasks"
+msgstr "Задачи"
 
 #: notes/templates/notes/notes.html:7
 msgid "NOTES"

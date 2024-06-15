@@ -4,7 +4,7 @@ from markdown.extensions import Extension
 # Internal Imports
 from notes.src.preprocessors import KeywordPreprocessor
 from notes.src.postprocessors import KeywordPostprocessor
-from notes.src.utils import ITEM, PRIORITY
+
 
 
 class KeywordExtension(Extension):
@@ -17,5 +17,5 @@ class KeywordExtension(Extension):
         super(KeywordExtension, self).__init__(**kwargs)
 
     def extendMarkdown(self, md):
-        md.preprocessors.register(KeywordPreprocessor(md, self.config['profile_settings'][0]), ITEM, PRIORITY)
-        md.postprocessors.register(KeywordPostprocessor(md, self.config['profile_settings'][0]), ITEM, PRIORITY)
+        md.preprocessors.register(KeywordPreprocessor(md, self.config['profile_settings'][0]), 'item', 1)
+        md.postprocessors.register(KeywordPostprocessor(md, self.config['profile_settings'][0]), 'item', 1)

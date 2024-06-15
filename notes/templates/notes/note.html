@@ -16,6 +16,24 @@
         </p>
         <a class="text-center btn btn-dark m-1" href="{% url 'notes:edit' note.title %}">{% translate "Edit" %}</a>
     </div>
+    {% if all_tasks_dict %}
+        <div class="card border m-3">
+            <div class="card-body" id="tasks"> 
+                <h5 class="card-title">{% translate "Tasks" %}:</h5>
+                <form id="formName" action="{% url 'notes:note' note.title %}" method="post">
+                    {% csrf_token %}
+                    <!-- <button type="submit" class="btn btn-dark d-flex justify-content-center text-center" value="save" name="save">{% translate "Save" %}</button> -->
+                    {% for key, tasks in all_tasks_dict.items %}
+                        {% for task in tasks %}
+                            <input type='checkbox' name="{{key}}_cb_{{task.item}} {{task.text}}_cb_{{ forloop.counter0 }}" id="{{ forloop.counter0 }}" value="{{task.item}} {{task.text}}" {{task.state}}>{{task.text}}</input><br>
+                            <input type='hidden' value='0' name="{{key}}_cb_{{task.item}} {{task.text}}_cb_{{ forloop.counter0 }}">
+                        {% endfor %}
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="card border m-3">
         <div class="card-body">
             {{ parsed_note|safe }}

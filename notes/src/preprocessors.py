@@ -15,7 +15,7 @@ class KeywordPreprocessor(Preprocessor):
         new_lines = []
 
         for line in lines:
-            m = self.check_for_patterns(line, self.__profile_settings)
+            m = self.__check_for_patterns(line)
 
             if m:
                 self.md.htmlStash.store(line)
@@ -24,8 +24,8 @@ class KeywordPreprocessor(Preprocessor):
 
         return new_lines
     
-    def check_for_patterns(cls, line, profile_settings):
-        for item in profile_settings:
+    def __check_for_patterns(self, line):
+        for item in self.__profile_settings:
             m = re.search(repr(item), line)
 
             if m:
