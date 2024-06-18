@@ -6,3 +6,5 @@
 
 
 # Models
+# Placeholder for future models
+pass

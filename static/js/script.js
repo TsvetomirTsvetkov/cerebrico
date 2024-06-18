@@ -28,15 +28,18 @@ document.addEventListener("DOMContentLoaded", function() {
             // Access the hidden field with the same name
             var hiddenField = document.querySelector('input[type="hidden"][name="' + checkbox.name + '"]');
 
-            // Modify the hidden field value based on the checkbox state
-            if (checkbox.checked) {
-                hiddenField.value = '[CHCK]';
-            } else {
-                hiddenField.value = '[UNCH]';
-            }
 
-            // Send form when checkbox selected
-            sendForm();
+            if (hiddenField){
+                // Modify the hidden field value based on the checkbox state
+                if (checkbox.checked) {
+                    hiddenField.value = '[CHCK]';
+                } else {
+                    hiddenField.value = '[UNCH]';
+                }
+                // Send form when checkbox selected
+                sendForm();
+            }
+            
 
         });
     });

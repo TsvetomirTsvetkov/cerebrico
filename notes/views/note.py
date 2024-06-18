@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 # Internal Imports
 from notes.forms import TextForm, UploadNoteForm
 from notes.models import Note
-from notes.utils import CHCK, DONE, UNCH, KeywordTypes, get_tasks, parse_lines, update_note
+from notes.utils import get_tasks, update_tasks_status
 
 
 # Views
@@ -111,39 +111,11 @@ def note(request, title):
 
     all_tasks_dict = get_tasks([get_note], profile_settings)
 
-    with open(get_note.upload.path, 'r') as f:
-        lines = f.read()
+    parsed_note = get_note.parse_note(profile_settings)
 
-    parsed_note = parse_lines(lines, profile_settings)
-
-    # TODO: Create a common function 
     if request.method == "POST":
         form_data = request.POST.items()
-
-        for field, value in form_data:
-            if KeywordTypes.CB in field:
-                split_string = field.split(KeywordTypes.CB)
-                note_title = split_string[0]
-                line = split_string[1]
-                
-                # TODO: Cleanup from parsed 
-                # parsed_note = parsed_note.replace(line, "")
-                
-                for items in all_tasks_dict[note_title]:
-                    if (items['item'] + ' ' + items['text']) == line:
-                        try:
-                            if value == CHCK:
-                                items['state'] = 'checked'
-                                note = get_object_or_404(request.user.note_set, title=note_title)
-                                update_note(note, line)
-                            elif value == UNCH:
-                                items['state'] = ''
-                                note = get_object_or_404(request.user.note_set, title=note_title)
-                                update_note(note, DONE + ' ' + line)
-                            else:
-                                continue
-                        except Exception as err:
-                            pass
+        update_tasks_status(request, form_data, all_tasks_dict)
 
     return render(
         request,

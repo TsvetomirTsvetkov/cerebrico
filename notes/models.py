@@ -1,4 +1,5 @@
 # External Imports
+from markdown import Markdown
 
 # Django Imports
 from django.contrib.auth.models import User
@@ -7,6 +8,7 @@ from django.db import models
 
 # Internal Imports
 from notes.utils import user_directory_path
+from notes.src.extensions import KeywordExtension
 
 
 # Models
@@ -21,15 +23,25 @@ class Note(models.Model):
     
     def save(self, *args, **kwargs):
         # Make note title url-friendly
-        # self.title = self.upload.name
         if " " in self.title:
             self.title = self.title.replace(" ", "-")
             
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        # TODO: Cleanup of media directory
         super().delete(*args, *kwargs)
+
+
+    def parse_note(self, profile_settings):
+        with open(self.upload.path, 'r') as f:
+            lines = f.read()
+
+        parser = Markdown(extensions=[KeywordExtension(profile_settings=profile_settings)])
+
+        parsed_lines = parser.reset().convert(lines)
+
+        return parsed_lines
+        
 
     class Meta:
       # Make note names unique per user

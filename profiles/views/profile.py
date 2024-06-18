@@ -66,8 +66,7 @@ def edit(request):
 
 @login_required
 def index(request):
-    form = ProfileUpdateForm(instance=request.user)
-    form = toggle_editable(form, disabled=True)
+    form = toggle_editable(ProfileUpdateForm(instance=request.user), disabled=True)
 
     return render(
         request,
@@ -100,6 +99,7 @@ def settings(request):
     if request.method == "POST":
         formset = ProfileSettingsFormSet(request.POST, instance=request.user)
         if formset.is_valid():
+            # TODO: Iterate over formset, don't allow [DONE]
             formset.save()
             return redirect("index")
     else:
