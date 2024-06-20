@@ -1,6 +1,6 @@
 # Cerebrico
 
-> __"Well you know, for my experience, your head's for having ideas, not for holding them."__ -_David Allen_
+> ![Cerebrico Index page](docs/images/landing_logged_in_en.png)
 
 ## Overview
 Cerebrico is a fast note-taking app that stands on the Markdown syntax and allows customization. 
