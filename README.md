@@ -9,11 +9,11 @@ It is fast, minimalistic and really easy to use.
 
 ## Installation
 
-##### Steps:
-
 > [!NOTE]  
 > Prerequisites:
 > Python 3+
+
+##### Steps:
 
 1. Clone the repository
 - `git clone git@github.com:TsvetomirTsvetkov/cerebrico.git`
@@ -32,7 +32,8 @@ It is fast, minimalistic and really easy to use.
 7. Create __.env__ file
 - `touch .env`
 8. Fill the file with the secret credentials
-> [!NOTE]  You can use [this](https://www.miniwebtool.com/django-secret-key-generator/) tool to generate a new secret key 
+> [!NOTE]  
+> You can use [this](https://www.miniwebtool.com/django-secret-key-generator/) tool to generate a new secret key 
 - SECRET_KEY=\<secret_key\>
 - DB_NAME=\<db_name\>
 - DB_USER=\<db_user\>
