@@ -79,6 +79,8 @@ def index(request):
 
 @login_required
 def settings(request):
+    no_errors = True
+
     labels = {
         'option': _('Option'), 
         'type': _('Type'), 
@@ -99,9 +101,19 @@ def settings(request):
     if request.method == "POST":
         formset = ProfileSettingsFormSet(request.POST, instance=request.user)
         if formset.is_valid():
-            # TODO: Iterate over formset, don't allow [DONE]
-            formset.save()
-            return redirect("index")
+            for form in formset:
+                keyword = form.cleaned_data.get('keyword')
+                separator = form.cleaned_data.get('separator')
+                prefix = form.cleaned_data.get('prefix')
+                
+                item = str(separator) + str(keyword) if prefix else str(keyword) + str(separator)
+
+                if item == '[DONE]':
+                    form.add_error('keyword', _("You cannot use this combination of keyword and separator as it's reserved."))
+                    no_errors = False
+            if no_errors:
+                formset.save()
+                return redirect("index")
     else:
         formset = ProfileSettingsFormSet(instance=request.user)
 
@@ -109,6 +121,7 @@ def settings(request):
         request,
         'profiles/settings.html',
         {
-            "formset": formset
+            "formset": formset,
+            'no_errors': no_errors
         }
     )

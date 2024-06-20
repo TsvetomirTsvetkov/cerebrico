@@ -17,6 +17,11 @@
                 {% endfor %}
                 <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save">{% translate "Save" %}</button>
             </form>
+            {% if not no_errors %}
+            <div class="alert alert-danger">
+                {{ formset.non_form_errors }}
+            </div>
+            {% endif %}
         </div>
 </div>
 

@@ -296,6 +296,11 @@ msgid "Delete"
 msgstr "Изтрий"
 
 
+#: profiles/views/profile.py:112
+msgid "You cannot use this combination of keyword and separator as it's reserved."
+msgstr "Не можете да използвате тази комбинация от ключова дума и разделител, защото е запазена."
+
+
 #: notes/views/search.py:30
 msgid "Sorry, we couldn't find anything..."
 msgstr "Съжаляваме, но не можахме да открием нищо..."
