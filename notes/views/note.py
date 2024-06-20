@@ -6,12 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext_lazy as _
 
 # Internal Imports
 from notes.forms import TextForm, UploadNoteForm
 from notes.models import Note
 from notes.utils import get_tasks, update_tasks_status
-
 
 # Views
 @login_required
@@ -111,7 +111,7 @@ def note(request, title):
 
     all_tasks_dict = get_tasks([get_note], profile_settings)
 
-    parsed_note = get_note.parse_note(profile_settings)
+    parsed_note = '<h5>' + _('Notes') + ':</h5>' + get_note.parse_note(profile_settings)
 
     if request.method == "POST":
         form_data = request.POST.items()
