@@ -2,23 +2,25 @@
 {% load i18n %}
 {% load crispy_forms_tags %} 
 
-<div class="container w-50">
+<div class="container">
     <h1 class="display-5 text-center">
         <b>{% translate "My profile" %}</b>
     </h1>
-    <form method="post">
-        {% csrf_token %}
-        <div class='card p-3 bg-white mt-3'>
-            {{ form|crispy }}
-            <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save" class="btn btn-outline-dark">{% translate "Save" %}</button>
-            <div class="card-footer bg-white">
-                <div class="d-flex justify-content-center">
-                    <a href="{% url 'profiles:change_password' %}">{% translate "Change Password" %}</a>
+    <div class="d-flex justify-content-center align-items-center">
+        <form method="post">
+            {% csrf_token %}
+            <div class='card p-3 bg-white mt-3'>
+                {{ form|crispy }}
+                <button type="submit" class="btn w-100 mt-3 btn-dark" value="save" name="save" class="btn btn-outline-dark">{% translate "Save" %}</button>
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'profiles:change_password' %}">{% translate "Change Password" %}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <button class="btn w-100 mt-3 btn-outline-danger" onclick="deleteProfile()">{% translate "Delete Profile" %}</button>
+            <button class="btn w-100 mt-3 btn-outline-danger" onclick="deleteProfile()">{% translate "Delete Profile" %}</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

@@ -39,7 +39,6 @@ def user_directory_path(instance, filename=""):
 
 # Update line status
 def change_state(line):
-    # TODO: Check with small keyword
     try:
         if line[:7] != (DONE + " "):
             line = DONE + " " + line

@@ -2,24 +2,26 @@
 {% load i18n %}
 {% load crispy_forms_tags %} 
 
-<div class="container-fluid w-25 vh-100">
-    <form action="{% url 'authentication:login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group pt-5">
-            <div class='card p-3 bg-white'>
-                <h1 class="text-center">
-                    <b>{% translate "Log in" %}</b>
-                </h1>
-                {{ form|crispy }}
-                <button type="submit" value="login" class="btn btn-dark">{% translate "Log in" %}</button>
-                <div class="card-footer bg-white">
-                    <div class="d-flex text-center justify-content-center">
-                        <p>{% translate "Don't have an account?" %}<br><a href="{% url 'authentication:signup' %}">{% translate "Sign up" %}</a></p>
+<div class="container-fluid vh-100">
+    <div class="d-flex justify-content-center align-items-center">
+        <form action="{% url 'authentication:login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group pt-5">
+                <div class='card p-3 bg-white'>
+                    <h1 class="text-center">
+                        <b>{% translate "Log in" %}</b>
+                    </h1>
+                    {{ form|crispy }}
+                    <button type="submit" value="login" class="btn btn-dark">{% translate "Log in" %}</button>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex text-center justify-content-center">
+                            <p>{% translate "Don't have an account?" %}<br><a href="{% url 'authentication:signup' %}">{% translate "Sign up" %}</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
