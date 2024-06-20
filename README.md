@@ -1,6 +1,6 @@
 # Cerebrico
 
-> ![Cerebrico Index page](docs/images/landing_logged_in_en.png)
+![Cerebrico Index page](docs/images/landing_logged_in_en.png)
 
 ## Overview
 Cerebrico is a fast note-taking app that stands on the Markdown syntax and allows customization. 
