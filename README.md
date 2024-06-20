@@ -16,7 +16,7 @@ It is fast, minimalistic and really easy to use.
 ##### Steps:
 
 1. Clone the repository
-- `git clone git@github.com:TsvetomirTsvetkov/cerebrico.git`
+- `git clone https://github.com/TsvetomirTsvetkov/cerebrico.git`
 2. Navigate to the __cerebrico__ folder
 - `cd cerebrico`
 3. Create a virtual environment
