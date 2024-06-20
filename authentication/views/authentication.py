@@ -44,7 +44,7 @@ def signup(request):
                 separator=":" 
             )
             login(request, user)
-            return redirect('notes:index')
+            return redirect('index')
 
     else:
         form = UserCreationForm()
