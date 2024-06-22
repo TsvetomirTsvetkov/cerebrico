@@ -12,7 +12,7 @@
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon.ico' %}">
     </head>
-    <body>
+    <body class="bg-light">
         <nav class="navbar navbar-expand-lg bg-white border border-bottom fixed-top ml-auto">
             <div class="d-flex gap-3 offset-sm-1">
                 <a class="navbar-brand " href="{% url 'index' %}">
@@ -113,17 +113,6 @@
         {% endblock %}
         </div>
 
-        <!-- <footer class="bootstrap-classes">
-            <div class="container">
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col"> 
-                            <p>TODO: Add links to Twitter, Facebook, etc.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="{% static 'js/script.js' %}"></script>
     </body>
