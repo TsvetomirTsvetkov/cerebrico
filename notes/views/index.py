@@ -17,7 +17,7 @@ TIPS = [
 ]
 
 QUOTES = [
-    _("Well you know, for my experience, your head's for having ideas, not for holding them."),
+    _("Well you know, from my experience, your head's for having ideas, not for holding them."),
     _("Write down the thoughts of the moment. Those that come unsought for are commonly the most valuable.")
 ]
 

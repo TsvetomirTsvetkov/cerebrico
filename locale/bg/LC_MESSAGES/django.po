@@ -243,7 +243,7 @@ msgid "If you want to change your username, password or other profile informatio
 msgstr "Ако искате да промените Вашето потребителско име, парола или друга информация, натиснете върху \"Моят профил\" в горната част на страницата."
 
 #: notes/views/index.py:20
-msgid "Well you know, for my experience, your head's for having ideas, not for holding them."
+msgid "Well you know, from my experience, your head's for having ideas, not for holding them."
 msgstr "Е, нали знаеш, от моя опит главата ти е, за да ражда идеи, а не за да ги държи"
 
 #: notes/views/index.py:21
