@@ -126,7 +126,7 @@ msgstr "Мястото за всички хора от училище, унив�
 
 #: notes/templates/notes/index.html:68
 msgid "Take a moment and think about all the times when you've wasted time looking for information"
-msgstr "Помислете за момементите, когато сте губили време търсейки информация"
+msgstr "Помислете за моментите, когато сте губили време търсейки информация"
 
 #: notes/templates/notes/index.html:69
 msgid "Now imagine it's all in"
