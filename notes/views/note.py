@@ -89,7 +89,11 @@ def upload(request):
 
     if request.method == "POST":
         if upload_form.is_valid():
-            upload_form.save()
+            note = upload_form.save(commit=False)
+            note.user = request.user
+            note.title = note.upload.name
+            note.save()
+            return redirect("notes:note", note)
     else:
         upload_form = UploadNoteForm()
 
