@@ -1,5 +1,4 @@
 # External Imports
-from markdown import Markdown
 
 # Django Imports
 from django.contrib.auth.decorators import login_required
@@ -72,9 +71,9 @@ def edit(request, title):
                     note.save()
                 return redirect("notes:note", note.title)
             except Exception:
-                formset = TextForm()
+                form = TextForm()
     else:
-        formset = TextForm()
+        form = TextForm()
 
     return render(
         request,
@@ -138,6 +137,6 @@ def notes(request):
         request,
         'notes/notes.html',
         {
-            "notes": get_notes, 
+            "notes": get_notes,
         }
     )
