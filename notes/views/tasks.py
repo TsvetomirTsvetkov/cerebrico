@@ -1,5 +1,4 @@
 # External Imports
-import re
 
 # Django Imports
 from django.contrib.auth.decorators import login_required

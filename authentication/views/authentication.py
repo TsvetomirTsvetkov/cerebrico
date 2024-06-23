@@ -12,17 +12,18 @@ from django.urls import reverse_lazy
 # Internal App Imports
 from profiles.models import ProfileSettings
 
+
 # Views
 class CustomLoginView(LoginView):
     redirect_authenticated_user = True
-    
+
     def get_success_url(self):
         return reverse_lazy('index')
-    
+
     def form_invalid(self, form):
-        messages.error(self.request,'Invalid username or password')
+        messages.error(self.request, 'Invalid username or password')
         return self.render_to_response(self.get_context_data(form=form))
-    
+
 
 @login_required
 def signout(request):
@@ -41,7 +42,7 @@ def signup(request):
                 user_id=user.id,
                 option="To Do",
                 keyword="TODO",
-                separator=":" 
+                separator=":"
             )
             login(request, user)
             return redirect('index')

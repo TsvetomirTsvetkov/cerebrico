@@ -20,17 +20,16 @@ class Note(models.Model):
 
     def __str__(self):
         return str(self.title)
-    
+
     def save(self, *args, **kwargs):
         # Make note title url-friendly
         if " " in self.title:
             self.title = self.title.replace(" ", "-")
-            
+
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         super().delete(*args, *kwargs)
-
 
     def parse_note(self, profile_settings):
         with open(self.upload.path, 'r') as f:
@@ -41,8 +40,7 @@ class Note(models.Model):
         parsed_lines = parser.reset().convert(lines)
 
         return parsed_lines
-        
 
     class Meta:
-      # Make note names unique per user
-      unique_together = ["user", "title"]
+        # Make note names unique per user
+        unique_together = ["user", "title"]

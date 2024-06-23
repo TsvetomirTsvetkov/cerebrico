@@ -14,7 +14,7 @@ class ProfileSettings(models.Model):
     TYPE_CHOICES = {
         CHECKBUTTON: "CheckButton",
     }
- 
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     option = models.CharField(max_length=250)
     type = models.CharField(choices=TYPE_CHOICES, default=CHECKBUTTON)
@@ -24,7 +24,7 @@ class ProfileSettings(models.Model):
 
     def __str__(self):
         return str(self.option)
-    
+
     def __repr__(self):
         if self.is_prefix:
             return self.separator + self.keyword

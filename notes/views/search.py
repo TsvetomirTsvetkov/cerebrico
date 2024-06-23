@@ -37,7 +37,7 @@ def search(request):
         request,
         'notes/search.html',
         {
-            "found_notes": found_notes, 
+            "found_notes": found_notes,
             "error": error,
         }
     )

@@ -13,6 +13,7 @@ from notes.forms import TextForm, UploadNoteForm
 from notes.models import Note
 from notes.utils import get_tasks, update_tasks_status
 
+
 # Views
 @login_required
 def create(request):
@@ -28,7 +29,7 @@ def create(request):
                 note = Note(user=request.user, title=title, upload=content_file)
                 note.save()
                 return redirect("notes:note", note)
-            except Exception as err:
+            except Exception:
                 text_form = TextForm(request.POST)
                 save_error = True
     else:

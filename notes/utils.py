@@ -16,7 +16,7 @@ UNCH = '[UNCH]'
 
 # Keyword Types
 class KeywordTypes():
-    CB   = '_cb_'
+    CB = '_cb_'
 
     @classmethod
     def get_vars(cls):
@@ -26,9 +26,9 @@ class KeywordTypes():
         for key, value in attributes.items():
             if not callable(value) and not key.startswith("__") and key != 'get_vars':
                 cls_vars.append(value)
-        
+
         return cls_vars
-    
+
 
 # Utility functions
 
@@ -44,7 +44,7 @@ def change_state(line):
             line = DONE + " " + line
         else:
             line = line[7:]
-    except Exception as err:
+    except Exception:
         pass
 
     return line
@@ -54,7 +54,7 @@ def change_state(line):
 def update_line(note, line):
     old_line = line
     new_line = change_state(line)
-    
+
     with open(note.upload.path, 'r') as f:
         note_contents = f.read()
 
@@ -108,7 +108,7 @@ def update_tasks_status(request, form_data, all_tasks_dict):
             split_string = field.split(KeywordTypes.CB)
             note_title = split_string[0]
             line = split_string[1]
-            
+
             for items in all_tasks_dict[note_title]:
                 if (items['item'] + ' ' + items['text']) == line:
                     try:
@@ -122,5 +122,5 @@ def update_tasks_status(request, form_data, all_tasks_dict):
                             update_line(note, DONE + ' ' + line)
                         else:
                             continue
-                    except Exception as err:
+                    except Exception:
                         pass

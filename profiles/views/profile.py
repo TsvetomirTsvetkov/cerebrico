@@ -10,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 
 # Internal Imports
-from profiles.forms import ProfileUpdateForm 
+from profiles.forms import ProfileUpdateForm
 from profiles.models import ProfileSettings
 from profiles.utils import toggle_editable
 
@@ -82,18 +82,18 @@ def settings(request):
     no_errors = True
 
     labels = {
-        'option': _('Option'), 
-        'type': _('Type'), 
-        'keyword': _('Keyword'), 
-        'separator': _('Separator'), 
-        'is_prefix': _('Is prefix'), 
+        'option': _('Option'),
+        'type': _('Type'),
+        'keyword': _('Keyword'),
+        'separator': _('Separator'),
+        'is_prefix': _('Is prefix'),
         'delete': _('Delete')
     }
 
     ProfileSettingsFormSet = inlineformset_factory(
-        User, 
-        ProfileSettings, 
-        fields=["option", "type", "keyword", "separator", "is_prefix"], 
+        User,
+        ProfileSettings,
+        fields=["option", "type", "keyword", "separator", "is_prefix"],
         labels=labels,
         extra=1
     )
@@ -105,7 +105,7 @@ def settings(request):
                 keyword = form.cleaned_data.get('keyword')
                 separator = form.cleaned_data.get('separator')
                 prefix = form.cleaned_data.get('prefix')
-                
+
                 item = str(separator) + str(keyword) if prefix else str(keyword) + str(separator)
 
                 if item == '[DONE]':
