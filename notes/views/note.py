@@ -71,9 +71,7 @@ def edit(request, title):
                     note.save()
                 return redirect("notes:note", note.title)
             except Exception:
-                form = TextForm()
-    else:
-        form = TextForm()
+                pass
 
     return render(
         request,
