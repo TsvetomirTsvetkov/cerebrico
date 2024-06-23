@@ -7,6 +7,7 @@ from markdown.preprocessors import Preprocessor
 
 class KeywordPreprocessor(Preprocessor):
     """ Store a custom line into the html stash """
+
     def __init__(self, md, profile_settings):
         super().__init__(md)
         self.__profile_settings = profile_settings
@@ -23,7 +24,7 @@ class KeywordPreprocessor(Preprocessor):
                 new_lines.append(line)
 
         return new_lines
-    
+
     def __check_for_patterns(self, line):
         for item in self.__profile_settings:
             m = re.search(repr(item), line)

@@ -6,13 +6,12 @@ from notes.src.preprocessors import KeywordPreprocessor
 from notes.src.postprocessors import KeywordPostprocessor
 
 
-
 class KeywordExtension(Extension):
     """ MarkDown Extension """
 
     def __init__(self, **kwargs):
         self.config = {
-            'profile_settings' : ['placeholder']
+            'profile_settings': ['placeholder']
         }
         super(KeywordExtension, self).__init__(**kwargs)
 
